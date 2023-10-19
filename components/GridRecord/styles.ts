@@ -1,6 +1,7 @@
 import NextImage from "next/image";
 import styled from "styled-components";
 
+import { RecordIcons } from "@/components/RecordIcons";
 import { theme } from "@/constants/theme";
 
 export const Image = styled(NextImage)`
@@ -37,20 +38,18 @@ export const RecordTitle = styled(RecordText)`
   font-weight: 500;
 `;
 
-type RecordColorProps = {
-  color: string;
-};
-
-export const RecordColor = styled.div<RecordColorProps>`
-  background: ${({ color }) => color};
-  border-radius: 100%;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  height: 2rem;
-  opacity: 0;
+export const RecordIconsContainer = styled.div`
+  align-items: center;
+  display: flex;
   position: absolute;
+  opacity: 0;
   right: 0.75rem;
   top: 0.75rem;
-  width: 2rem;
+
+  &,
+  & div {
+    gap: 0.75rem;
+  }
 
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -72,7 +71,11 @@ export const Container = styled.div`
     opacity: 0.8;
   }
 
-  &:hover ${RecordColor}, &:active ${RecordColor} {
+  &:hover ${RecordIconsContainer}, &:active ${RecordIconsContainer} {
     opacity: 1;
   }
+`;
+
+export const StyledRecordIcons = styled(RecordIcons)`
+  transform: scale(1.5);
 `;

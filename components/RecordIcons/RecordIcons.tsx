@@ -9,25 +9,26 @@ import { AllMediaIcon, IconsContainer, VinylIcon } from "./styles";
 
 type RecordIconsProps = {
   format: ReleaseFormat;
+  className?: string;
 };
 
-const renderIcon = (format: ReleaseFormat) => {
+const renderIcon = (format: ReleaseFormat, className?: string) => {
   switch (format.name.toLowerCase().replace(" ", "")) {
     case "cd":
-      return <Icon name={Icons.cd} size="1.125rem" />;
+      return <Icon name={Icons.cd} size="1.1rem" className={className} />;
     case "boxset":
-      return <Icon name={Icons.boxset} />;
+      return <Icon name={Icons.boxset} className={className} />;
     case "allmedia":
       return <AllMediaIcon>i</AllMediaIcon>;
     default:
-      return <VinylIcon color={getRecordColor(format)} />;
+      return <VinylIcon color={getRecordColor(format)} className={className} />;
   }
 };
 
-export const RecordIcons = ({ format }: RecordIconsProps) => (
+export const RecordIcons = ({ format, className }: RecordIconsProps) => (
   <IconsContainer>
     {[...Array(Number(format.qty))].map((_, index) => (
-      <Fragment key={index}>{renderIcon(format)}</Fragment>
+      <Fragment key={index}>{renderIcon(format, className)}</Fragment>
     ))}
   </IconsContainer>
 );

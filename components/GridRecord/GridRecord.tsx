@@ -1,19 +1,16 @@
 import { ReleaseLink } from "@/components/ReleaseLink";
-import { Color } from "@/constants";
+import { ALL_MEDIA } from "@/constants";
 import type { Release } from "@/types";
-import {
-  formatArtists,
-  formatReleaseDescription,
-  getRecordColor,
-} from "@/utils";
+import { formatArtists, formatReleaseDescription, isFormat } from "@/utils";
 
 import {
   Container,
   Image,
   Overlay,
-  RecordColor,
+  RecordIconsContainer,
   RecordText,
   RecordTitle,
+  StyledRecordIcons,
 } from "./styles";
 
 type GridRecordProps = {
@@ -45,10 +42,15 @@ export const GridRecord = ({ release }: GridRecordProps) => {
             {formatReleaseDescription(formats[0])}
           </RecordText>
         </Overlay>
-
-        {getRecordColor(formats[0]) !== Color.black && (
-          <RecordColor color={getRecordColor(formats[0])} />
-        )}
+        <RecordIconsContainer>
+          {formats.map(
+            (format, index) =>
+              formatReleaseDescription(format) &&
+              !isFormat(format.name, ALL_MEDIA) && (
+                <StyledRecordIcons format={format} key={index} />
+              )
+          )}
+        </RecordIconsContainer>
       </Container>
     </ReleaseLink>
   );
