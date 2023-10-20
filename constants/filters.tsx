@@ -1,4 +1,3 @@
-import { Icon } from "@/components/Icon";
 import type { Folder } from "@/types";
 
 import { Icons } from "./icons";
@@ -49,13 +48,13 @@ export const FILTER_OPTIONS = {
     {
       id: SortOrder.asc,
       name: "↑",
-      icon: <Icon name={Icons.asc} />,
+      icon: { name: Icons.asc },
       a11yLabel: "Ascending",
     },
     {
       id: SortOrder.desc,
       name: "↓",
-      icon: <Icon name={Icons.desc} />,
+      icon: { name: Icons.desc },
       a11yLabel: "Descending",
     },
   ],

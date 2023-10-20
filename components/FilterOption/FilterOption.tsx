@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { Icon } from "@/components/Icon";
+import { OptionIconType } from "@/types";
 
 import { FilterCheckbox, FilterLabel, FilterText, MotionSpan } from "./styles";
 
@@ -9,7 +10,7 @@ type FilterOptionProps = {
   active: boolean;
   handleClick: () => void;
   minWidth?: string;
-  icon?: ReactNode;
+  icon?: OptionIconType;
   a11yLabel?: string;
 };
 
@@ -38,6 +39,8 @@ export const FilterOption = ({
       onChange={handleClick}
       aria-label={a11yLabel}
     />
-    <FilterText $active={active}>{icon || label}</FilterText>
+    <FilterText $active={active}>
+      {icon?.name ? <Icon name={icon.name} size={icon.size} /> : label}
+    </FilterText>
   </FilterLabel>
 );

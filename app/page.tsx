@@ -41,17 +41,17 @@ export default function Home({ searchParams }: HomeProps) {
         <Header>
           <FiltersContainer>
             {filtersOptions.map((filter) => (
-              <FilterGroup {...filter} key={filter.title} />
+              <FilterGroup {...filter} key={filter.name} />
             ))}
           </FiltersContainer>
           <FiltersContainer>
             <FiltersContainer>
               {sortOptions.map((sortOption) => (
-                <FilterGroup {...sortOption} key={sortOption.title} />
+                <FilterGroup {...sortOption} key={sortOption.name} />
               ))}
             </FiltersContainer>
             {viewOptions.map((viewOption) => (
-              <FilterGroup {...viewOption} key={viewOption.title} />
+              <FilterGroup {...viewOption} key={viewOption.name} />
             ))}
           </FiltersContainer>
         </Header>
