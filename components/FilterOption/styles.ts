@@ -42,11 +42,12 @@ type FilterTextProps = {
 };
 
 export const FilterText = styled.div<FilterTextProps>`
+  align-items: center;
   color: ${({ $active }) =>
     $active ? theme.light.secondary.background : theme.light.secondary.color};
   display: flex;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 400;
   justify-content: center;
   padding: 0.375rem 0.75rem;
   position: relative;

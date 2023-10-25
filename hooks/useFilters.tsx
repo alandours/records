@@ -80,13 +80,13 @@ export const useFilters = (searchParams: SearchParamsType) => {
         {
           id: View.grid,
           name: "Grid",
-          icon: <Icon name={Icons.grid} />,
+          icon: <Icon name={Icons.grid} size="1.125rem" />,
           a11yLabel: "View as grid",
         },
         {
           id: View.list,
           name: "List",
-          icon: <Icon name={Icons.list} />,
+          icon: <Icon name={Icons.list} size="1.125rem" />,
           a11yLabel: "View as list",
         },
       ],

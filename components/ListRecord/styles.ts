@@ -39,15 +39,16 @@ export const Image = styled(NextImage)`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 0.875rem;
-  gap: 0.5rem;
+  font-size: 0.95rem;
+  gap: 0.75rem;
   overflow: hidden;
-  padding: 1rem;
+  padding: 1.125rem;
   width: 100%;
 `;
 
 export const RecordTitle = styled.div`
   font-weight: 700;
+  margin-bottom: 0.125rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

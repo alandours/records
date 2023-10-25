@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 
 import { GoogleTagManager } from "@/components/GoogleTagManager";
 import { BASE_URL, GTM_ID, SITE_DESCRIPTION, SITE_NAME } from "@/constants";
@@ -8,7 +8,10 @@ import StyledComponentsRegistry from "@/lib/registry";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Roboto({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: SITE_NAME,

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { theme } from "@/constants/theme";
 
 export const FilterGroupTitle = styled.div`
+  font-size: 0.95rem;
   margin-bottom: 0.5rem;
   min-height: 1.5rem;
 `;
@@ -11,7 +12,7 @@ export const FilterOptions = styled.div`
   background: ${theme.light.secondary.background};
   border-radius: 0.375rem;
   display: flex;
-  min-height: 2.8rem;
+  min-height: 2.9rem;
   padding: 0.375rem;
   width: 100%;
 

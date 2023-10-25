@@ -14,7 +14,7 @@ export const Overlay = styled.div`
   color: ${theme.common.black.color};
   display: flex;
   flex-direction: column;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   gap: 0.5rem;
   opacity: 0;
   padding: 0.75rem;
@@ -34,7 +34,7 @@ export const RecordText = styled.div`
 `;
 
 export const RecordTitle = styled(RecordText)`
-  font-weight: 700;
+  font-weight: 500;
 `;
 
 type RecordColorProps = {
@@ -59,6 +59,7 @@ export const RecordColor = styled.div<RecordColorProps>`
 
 export const Container = styled.div`
   background: ${theme.light.secondary.background};
+  font-weight: 300;
   max-height: auto;
   max-width: 100%;
   position: relative;
