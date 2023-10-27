@@ -10,7 +10,7 @@ import { RecordsList } from "@/components/RecordsList";
 import { RecordsListLoader } from "@/components/RecordsListLoader";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { SocialLinks } from "@/components/SocialLinks";
-import { View } from "@/constants/enums";
+import { View } from "@/constants";
 import { useFilters } from "@/hooks/useFilters";
 
 import { Container, FiltersContainer, Header, Main } from "./styles";

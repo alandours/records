@@ -1,8 +1,6 @@
-import { Icon } from "@/components/Icon";
-import type { Folder } from "@/types";
-
-import { Color, Sort, SortOrder } from "./enums";
-import { Icons } from "./icons";
+export * from "./icons";
+export * from "./filters";
+export * from "./site";
 
 export const AVAILABLE_FOLDERS = [0, 6467602, 6467605];
 
@@ -91,47 +89,3 @@ export const EXCLUDE_COLORS = [
   "remastered",
   "silver edition",
 ];
-
-export const INITIAL_FILTERS = {
-  folder: 0,
-  sort: Sort.added,
-  sortOrder: SortOrder.desc,
-  page: 1,
-};
-
-export const INITIAL_FOLDERS = [{ id: 0 }, { id: 1 }, { id: 2 }] as Folder[];
-
-export const FILTER_OPTIONS = {
-  color: [
-    { id: Color.all, name: "All" },
-    { id: Color.black, name: "Black" },
-    { id: Color.color, name: "Color" },
-  ],
-  sort: [
-    { id: Sort.added, name: "Date added" },
-    { id: Sort.artist, name: "Artist" },
-    { id: Sort.title, name: "Album" },
-  ],
-  sortOrder: [
-    {
-      id: SortOrder.asc,
-      name: "↑",
-      icon: <Icon name={Icons.asc} />,
-      a11yLabel: "Ascending",
-    },
-    {
-      id: SortOrder.desc,
-      name: "↓",
-      icon: <Icon name={Icons.desc} />,
-      a11yLabel: "Descending",
-    },
-  ],
-};
-
-export enum Environments {
-  production = "production",
-  staging = "staging",
-  development = "development",
-}
-
-export const GTM_ID = process.env.NEXT_PUBLIC_GTM;

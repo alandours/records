@@ -1,4 +1,4 @@
-import { Sort, SortOrder, View } from "@/constants/enums";
+import { Sort, SortOrder, View } from "@/constants";
 
 type ReleaseNote = { fieldId: number; value: string };
 

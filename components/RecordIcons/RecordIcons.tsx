@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 
 import { Icon } from "@/components/Icon";
-import { Icons } from "@/constants/icons";
+import { Icons } from "@/constants";
 import { getRecordColor } from "@/utils";
 import type { ReleaseFormat } from "@/types";
 

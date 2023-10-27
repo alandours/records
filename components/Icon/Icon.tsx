@@ -1,4 +1,4 @@
-import { Icons, icons } from "@/constants/icons";
+import { Icons, icons } from "@/constants";
 
 type IconProps = {
   name: Icons;

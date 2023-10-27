@@ -7,8 +7,11 @@ import {
   ALL_MEDIA,
   INITIAL_FILTERS,
   EXCLUDE_COLORS,
+  Color,
+  Sort,
+  SortOrder,
+  View,
 } from "@/constants";
-import { Color, Sort, SortOrder, View } from "@/constants/enums";
 import type {
   CollectionOptions,
   Release,

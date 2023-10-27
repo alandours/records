@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import { GoogleTagManager } from "@/components/GoogleTagManager";
-import { GTM_ID } from "@/constants";
+import { BASE_URL, GTM_ID, SITE_DESCRIPTION, SITE_NAME } from "@/constants";
 import StyledComponentsRegistry from "@/lib/registry";
 
 import "./globals.css";
@@ -11,8 +11,14 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "alansrecords",
-  description: "Vinyl record collection",
+  title: SITE_NAME,
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: "/",
+  },
+  metadataBase: new URL(BASE_URL),
 };
 
 export default function RootLayout({

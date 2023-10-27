@@ -1,5 +1,5 @@
 import { Icon } from "@/components/Icon";
-import { Icons } from "@/constants/icons";
+import { Icons } from "@/constants";
 
 import { Links } from "./styles";
 
