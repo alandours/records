@@ -1,6 +1,8 @@
+import { Icon } from "@/components/Icon";
 import type { Folder } from "@/types";
 
 import { Color, Sort, SortOrder } from "./enums";
+import { Icons } from "./icons";
 
 export const AVAILABLE_FOLDERS = [0, 6467602, 6467605];
 
@@ -111,7 +113,17 @@ export const FILTER_OPTIONS = {
     { id: Sort.title, name: "Album" },
   ],
   sortOrder: [
-    { id: SortOrder.desc, name: "↓", a11yLabel: "Descending" },
-    { id: SortOrder.asc, name: "↑", a11yLabel: "Ascending" },
+    {
+      id: SortOrder.asc,
+      name: "↑",
+      icon: <Icon name={Icons.asc} />,
+      a11yLabel: "Ascending",
+    },
+    {
+      id: SortOrder.desc,
+      name: "↓",
+      icon: <Icon name={Icons.desc} />,
+      a11yLabel: "Descending",
+    },
   ],
 };

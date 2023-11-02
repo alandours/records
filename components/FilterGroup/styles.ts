@@ -13,10 +13,14 @@ export const FilterOptions = styled.div`
   display: flex;
   min-height: 2.8rem;
   padding: 0.375rem;
-  width: fit-content;
+  width: 100%;
 
   @media (prefers-color-scheme: dark) {
     background: ${theme.dark.secondary.background};
+  }
+
+  @media (min-width: 640px) {
+    width: fit-content;
   }
 `;
 
@@ -24,4 +28,9 @@ export const FilterGroupContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    width: auto;
+  }
 `;

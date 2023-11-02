@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
+import { getCollections, getFolders } from "@/app/actions";
 import { FILTER_OPTIONS, INITIAL_FOLDERS } from "@/constants";
+import { Color, Sort, SortOrder, View } from "@/constants/enums";
+import { Icons } from "@/constants/icons";
+import { Icon } from "@/components/Icon";
 import type {
   CollectionOptions,
   Folder,
@@ -8,10 +13,7 @@ import type {
   Release,
   SearchParamsType,
 } from "@/types";
-import { getCollections, getFolders } from "@/app/actions";
-import { Color, Sort, SortOrder, View } from "@/constants/enums";
 import { filterByColor, getInitialFilters, getInitialView } from "@/utils";
-import { usePathname, useRouter } from "next/navigation";
 
 export const useFilters = (searchParams: SearchParamsType) => {
   const router = useRouter();
@@ -76,8 +78,18 @@ export const useFilters = (searchParams: SearchParamsType) => {
       name: "view",
       title: "View",
       data: [
-        { id: View.grid, name: "Grid", a11yLabel: "View as grid" },
-        { id: View.list, name: "List", a11yLabel: "View as list" },
+        {
+          id: View.grid,
+          name: "Grid",
+          icon: <Icon name={Icons.grid} />,
+          a11yLabel: "View as grid",
+        },
+        {
+          id: View.list,
+          name: "List",
+          icon: <Icon name={Icons.list} />,
+          a11yLabel: "View as list",
+        },
       ],
       activeOption: view,
       handleClick: (option: Option<View>) => {

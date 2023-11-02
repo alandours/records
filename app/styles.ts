@@ -2,7 +2,11 @@ import { theme } from "@/constants/theme";
 import styled from "styled-components";
 
 export const Header = styled.header`
-  margin: 3rem 1rem;
+  margin: 3rem 1rem 2rem;
+
+  @media (min-width: 640px) {
+    margin: 3rem 1rem;
+  }
 `;
 
 export const Main = styled.main`
@@ -29,8 +33,13 @@ export const FiltersContainer = styled.section`
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: space-between;
+  width: 100%;
 
   & + & {
     margin-top: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    width: auto;
   }
 `;

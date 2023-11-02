@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 import { FilterCheckbox, FilterLabel, FilterText, MotionSpan } from "./styles";
 
 type FilterOptionProps = {
@@ -7,6 +9,7 @@ type FilterOptionProps = {
   active: boolean;
   handleClick: () => void;
   minWidth?: string;
+  icon?: ReactNode;
   a11yLabel?: string;
 };
 
@@ -17,6 +20,7 @@ export const FilterOption = ({
   active,
   handleClick,
   minWidth,
+  icon,
   a11yLabel,
 }: FilterOptionProps) => (
   <FilterLabel htmlFor={id} $minWidth={minWidth} title={a11yLabel}>
@@ -34,6 +38,6 @@ export const FilterOption = ({
       onChange={handleClick}
       aria-label={a11yLabel}
     />
-    <FilterText $active={active}>{label}</FilterText>
+    <FilterText $active={active}>{icon || label}</FilterText>
   </FilterLabel>
 );
