@@ -1,15 +1,11 @@
 import { Fragment } from "react";
 
-import type { ReleaseFormat } from "@/types";
+import { Icon } from "@/components/Icon";
+import { Icons } from "@/constants/icons";
 import { getRecordColor } from "@/utils";
+import type { ReleaseFormat } from "@/types";
 
-import {
-  AllMediaIcon,
-  BoxsetIcon,
-  CdIcon,
-  IconsContainer,
-  VinylIcon,
-} from "./styles";
+import { AllMediaIcon, IconsContainer, VinylIcon } from "./styles";
 
 type RecordIconsProps = {
   format: ReleaseFormat;
@@ -18,9 +14,9 @@ type RecordIconsProps = {
 const renderIcon = (format: ReleaseFormat) => {
   switch (format.name.toLowerCase().replace(" ", "")) {
     case "cd":
-      return <CdIcon />;
+      return <Icon name={Icons.cd} size="1.125rem" />;
     case "boxset":
-      return <BoxsetIcon />;
+      return <Icon name={Icons.boxset} />;
     case "allmedia":
       return <AllMediaIcon>i</AllMediaIcon>;
     default:

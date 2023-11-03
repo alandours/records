@@ -9,6 +9,12 @@ type RecordIconProps = {
 export const IconsContainer = styled.div`
   display: flex;
   margin-right: 0.25rem;
+
+  @media (prefers-color-scheme: dark) {
+    & svg {
+      fill: ${theme.common.white.background};
+    }
+  }
 `;
 
 export const RecordIcon = styled.div<RecordIconProps>`
