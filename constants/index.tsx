@@ -127,3 +127,11 @@ export const FILTER_OPTIONS = {
     },
   ],
 };
+
+export enum Environments {
+  production = "production",
+  staging = "staging",
+  development = "development",
+}
+
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM;
