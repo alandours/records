@@ -28,6 +28,7 @@ export const useFilters = (searchParams: SearchParamsType) => {
 
   const filtersOptions = [
     {
+      name: "format",
       title: "Format",
       data: availableFolders,
       activeOption: filters.folder,
@@ -37,6 +38,7 @@ export const useFilters = (searchParams: SearchParamsType) => {
       },
     },
     {
+      name: "color",
       title: "Color",
       data: FILTER_OPTIONS.color,
       activeOption: colorFilter,
@@ -48,6 +50,7 @@ export const useFilters = (searchParams: SearchParamsType) => {
 
   const sortOptions = [
     {
+      name: "sort",
       title: "Sort",
       data: FILTER_OPTIONS.sort,
       activeOption: filters.sort,
@@ -57,7 +60,7 @@ export const useFilters = (searchParams: SearchParamsType) => {
       },
     },
     {
-      title: "",
+      name: "sortOrder",
       data: FILTER_OPTIONS.sortOrder,
       activeOption: filters.sortOrder,
       handleClick: (option: Option<SortOrder>) => {
@@ -70,6 +73,7 @@ export const useFilters = (searchParams: SearchParamsType) => {
 
   const viewOptions = [
     {
+      name: "view",
       title: "View",
       data: [
         { id: View.grid, name: "Grid", a11yLabel: "View as grid" },

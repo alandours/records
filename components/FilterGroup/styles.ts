@@ -19,3 +19,9 @@ export const FilterOptions = styled.div`
     background: ${theme.dark.secondary.background};
   }
 `;
+
+export const FilterGroupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`;

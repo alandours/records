@@ -1,10 +1,15 @@
 import { FilterOption } from "@/components/FilterOption";
 import type { Option } from "@/types";
 
-import { FilterGroupTitle, FilterOptions } from "./styles";
+import {
+  FilterGroupContainer,
+  FilterGroupTitle,
+  FilterOptions,
+} from "./styles";
 
 type FilterGroupProps = {
-  title: string;
+  name: string;
+  title?: string;
   data: Option<string>[] | Option<number>[];
   handleClick: (option: Option<any>) => void;
   activeOption: string | number;
@@ -14,24 +19,27 @@ type FilterGroupProps = {
 export const FilterGroup = ({
   data,
   handleClick,
+  name,
   title,
   activeOption,
   minWidth,
 }: FilterGroupProps) => (
-  <div
+  <FilterGroupContainer
     role="radiogroup"
-    aria-labelledby={`filter-group-${title.toLowerCase()}`}
+    aria-labelledby={`filter-group-${name.toLowerCase()}`}
   >
-    <FilterGroupTitle id={`filter-group-${title.toLowerCase()}`}>
-      {title}
-    </FilterGroupTitle>
+    {title && (
+      <FilterGroupTitle id={`filter-group-${name.toLowerCase()}`}>
+        {title}
+      </FilterGroupTitle>
+    )}
     <FilterOptions>
       {data.map((option) => (
         <FilterOption
-          id={`${title.toLowerCase()}-${option.id}`}
+          id={`${name.toLowerCase()}-${option.id}`}
           key={option.id}
           label={option.name}
-          name={title}
+          name={name}
           active={activeOption === option.id}
           handleClick={() => handleClick(option)}
           minWidth={minWidth}
@@ -39,5 +47,5 @@ export const FilterGroup = ({
         />
       ))}
     </FilterOptions>
-  </div>
+  </FilterGroupContainer>
 );
