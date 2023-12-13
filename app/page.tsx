@@ -9,6 +9,7 @@ import { RecordsGridLoader } from "@/components/RecordsGridLoader";
 import { RecordsList } from "@/components/RecordsList";
 import { RecordsListLoader } from "@/components/RecordsListLoader";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { SocialLinks } from "@/components/SocialLinks";
 import { View } from "@/constants/enums";
 import { useFilters } from "@/hooks/useFilters";
 
@@ -66,6 +67,7 @@ export default function Home({ searchParams }: HomeProps) {
         </InfiniteScroll>
       </Container>
       <ScrollToTop />
+      <SocialLinks />
     </Main>
   );
 }
