@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "@types/humps": "^2.0.6",
     "framer-motion": "^11.0.6",
     "humps": "^2.0.1",
