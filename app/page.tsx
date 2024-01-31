@@ -2,6 +2,7 @@
 
 import InfiniteScroll from "react-infinite-scroll-component";
 
+import { EndVideo } from "@/components/EndVideo";
 import { FilterGroup } from "@/components/FilterGroup";
 import { RecordsGrid } from "@/components/RecordsGrid";
 import { RecordsGridLoader } from "@/components/RecordsGridLoader";
@@ -57,9 +58,7 @@ export default function Home({ searchParams }: HomeProps) {
           next={loadMore}
           hasMore={hasMore}
           loader={<Loader />}
-          endMessage={
-            !!dataLength ? <p className="text-center">The End</p> : <Loader />
-          }
+          endMessage={!!dataLength ? <EndVideo /> : <Loader />}
           scrollThreshold={0.9}
         >
           <RecordsView releases={releases} />
