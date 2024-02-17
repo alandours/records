@@ -10,11 +10,12 @@ export const Header = styled.header`
 `;
 
 export const Main = styled.main`
+  align-items: center;
+  background: ${theme.light.main.background};
   color: ${theme.light.main.color};
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background: ${theme.light.main.background};
+  padding-bottom: 3rem;
 
   @media (prefers-color-scheme: dark) {
     color: ${theme.dark.main.color};
