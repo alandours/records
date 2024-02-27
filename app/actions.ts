@@ -1,6 +1,25 @@
 "use server";
 
-import { CollectionResponse } from "@/types";
+import { AVAILABLE_FOLDERS } from "@/constants";
+import { CollectionResponse, FoldersResponse } from "@/types";
+
+export const fetchFolders = async () => {
+  const response = await fetch(
+    `https://api.discogs.com/users/${process.env.DISCOGS_USERNAME}/collection/folders`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Discogs token=${process.env.DISCOGS_TOKEN}`,
+      },
+    }
+  );
+
+  const folders: FoldersResponse = await response.json();
+
+  return folders.folders.filter((folder) =>
+    AVAILABLE_FOLDERS.includes(folder.id)
+  );
+};
 
 export type CollectionOptions = {
   folder: number;
