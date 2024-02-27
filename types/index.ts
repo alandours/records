@@ -1,6 +1,6 @@
 type ReleaseNote = { field_id: number; value: string };
 
-type ReleaseFormat = {
+export type ReleaseFormat = {
   name: string;
   qty: string;
   descriptions: string[];
