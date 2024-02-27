@@ -1,7 +1,11 @@
 import Image from "next/image";
 
 import { Release } from "@/types";
-import { formatArtists } from "@/utils";
+import {
+  formatArtists,
+  formatReleaseDescription,
+  getRecordColor,
+} from "@/utils";
 
 type GridRecordProps = {
   release: Release;
@@ -9,7 +13,7 @@ type GridRecordProps = {
 
 export const GridRecord = ({ release }: GridRecordProps) => {
   const {
-    basic_information: { title, cover_image, artists },
+    basic_information: { title, cover_image, artists, formats },
   } = release;
 
   return (
@@ -36,7 +40,20 @@ export const GridRecord = ({ release }: GridRecordProps) => {
             {formatArtists(artists)}
           </div>
         </div>
+        <div
+          className="text-ellipsis whitespace-nowrap overflow-hidden"
+          title={formatReleaseDescription(formats[0])}
+        >
+          {formatReleaseDescription(formats[0])}
+        </div>
       </div>
+
+      {getRecordColor(formats[0]) !== "black" && (
+        <div
+          className="absolute top-3 right-3 rounded-full w-8 h-8 shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{ background: getRecordColor(formats[0]) }}
+        />
+      )}
     </div>
   );
 };
