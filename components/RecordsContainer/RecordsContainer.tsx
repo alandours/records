@@ -3,18 +3,18 @@
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
+import { FilterGroup } from "@/components/FilterGroup";
 import { RecordsGrid } from "@/components/RecordsGrid";
 import { RecordsList } from "@/components/RecordsList";
-import { Folder, Release } from "@/types";
-import { INITIAL_FILTERS } from "@/constants";
+
 import {
   CollectionOptions,
   fetchCollection,
   fetchFolders,
 } from "@/app/actions";
+import { INITIAL_FILTERS } from "@/constants";
+import { Folder, Release } from "@/types";
 import { getRecordColor } from "@/utils";
-import { GridLoader } from "../GridLoader";
-import { FilterGroup } from "@/components/FilterGroup";
 
 export const RecordsContainer = () => {
   const [releases, setReleases] = useState<Release[]>([]);
@@ -139,7 +139,7 @@ export const RecordsContainer = () => {
   ];
 
   return (
-    <div>
+    <div className="m-2 max-w-[1200px]">
       <section>
         <h2 className="text-lg font-bold mb-2">Filters</h2>
         <div className="flex gap-4">
@@ -161,12 +161,12 @@ export const RecordsContainer = () => {
           dataLength={releases.length}
           next={() => setCurrentPage((prev) => prev + 1)}
           hasMore={currentPage < pages}
-          loader={<GridLoader />}
+          loader={<RecordsGrid loader />}
           endMessage={
             !!releases.length ? (
               <p className="text-center">End</p>
             ) : (
-              <GridLoader />
+              <RecordsGrid loader />
             )
           }
           scrollThreshold={0.9}
