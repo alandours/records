@@ -1,17 +1,18 @@
 import { FilterOption } from "@/components/FilterOption";
+import { Option } from "@/types";
 
 type FilterGroupProps = {
-  data: { id: any; name: string }[];
   title: string;
-  handleClick: (value: any) => void;
-  activeKey: any;
+  data: Option<string | number>[];
+  handleClick: (option: Option<string | number>) => void;
+  activeOption: string | number;
 };
 
 export const FilterGroup = ({
   data,
   handleClick,
   title,
-  activeKey,
+  activeOption,
 }: FilterGroupProps) => (
   <div
     className=""
@@ -22,13 +23,13 @@ export const FilterGroup = ({
       {title}
     </div>
     <div className="flex bg-blue-100 p-1.5 rounded-md w-80">
-      {data.map((option: { id: number; name: string }) => (
+      {data.map((option) => (
         <FilterOption
           id={`${title.toLowerCase()}-${option.id}`}
           key={option.id}
-          value={option.name}
+          label={option.name}
           name={title}
-          active={activeKey === option.id}
+          active={activeOption === option.id}
           handleClick={() => handleClick(option)}
         />
       ))}

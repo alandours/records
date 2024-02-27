@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
 type FilterOptionProps = {
-  id: any;
-  value: any;
+  id: string;
+  label: string;
   name: string;
   active: boolean;
   handleClick: () => void;
@@ -10,7 +10,7 @@ type FilterOptionProps = {
 
 export const FilterOption = ({
   id,
-  value,
+  label,
   name,
   active,
   handleClick,
@@ -43,7 +43,7 @@ export const FilterOption = ({
         active ? "white" : "black"
       } px-2.5 py-1.5 transition-colors w-full`}
     >
-      {value}
+      {label}
     </div>
   </label>
 );

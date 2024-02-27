@@ -13,13 +13,13 @@ type RecordsGridProps =
 
 export const RecordsGrid = ({ releases, loader = false }: RecordsGridProps) => {
   const items = Array(20).fill(
-    <div className="col-span-1 bg-blue-500">
+    <div className="col-span-1 bg-gray-200">
       <div className="aspect-square w-[500px] max-w-full h-auto" />
     </div>
   );
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2">
+    <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2 my-2">
       {loader
         ? items
         : releases?.map((release) => (

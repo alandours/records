@@ -6,14 +6,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { FilterGroup } from "@/components/FilterGroup";
 import { RecordsGrid } from "@/components/RecordsGrid";
 import { RecordsList } from "@/components/RecordsList";
-
 import {
   CollectionOptions,
   fetchCollection,
   fetchFolders,
 } from "@/app/actions";
 import { INITIAL_FILTERS } from "@/constants";
-import { Folder, Release } from "@/types";
+import { Folder, Option, Release } from "@/types";
 import { getRecordColor } from "@/utils";
 
 export const RecordsContainer = () => {
@@ -21,7 +20,7 @@ export const RecordsContainer = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [pages, setPages] = useState(0);
   const [availableFolders, setAvailableFolders] = useState<Folder[]>([]);
-  const [view, setView] = useState<"grid" | "list">("grid");
+  const [view, setView] = useState<string>("grid");
   const [filters, setFilters] = useState(INITIAL_FILTERS);
   const [isLoading, setIsLoading] = useState(true);
   const [colorFilter, setColorFilter] = useState("all");
@@ -82,16 +81,16 @@ export const RecordsContainer = () => {
         { id: "grid", name: "Grid" },
         { id: "list", name: "List" },
       ],
-      activeKey: view,
-      handleClick: (option: any) => {
+      activeOption: view,
+      handleClick: (option: Option<string>) => {
         setView(option.id);
       },
     },
     {
       title: "Format",
       data: availableFolders,
-      activeKey: filters.folder,
-      handleClick: (option: any) => {
+      activeOption: filters.folder,
+      handleClick: (option: Option<number>) => {
         setReleases([]);
         setFilters((prev) => ({ ...prev, folder: option.id }));
       },
@@ -103,8 +102,8 @@ export const RecordsContainer = () => {
         { id: "black", name: "Black" },
         { id: "color", name: "Color" },
       ],
-      activeKey: colorFilter,
-      handleClick: (option: any) => {
+      activeOption: colorFilter,
+      handleClick: (option: Option<string>) => {
         setColorFilter(option.id);
       },
     },
@@ -118,8 +117,8 @@ export const RecordsContainer = () => {
         { id: "artist", name: "Artists" },
         { id: "title", name: "Title" },
       ],
-      activeKey: filters.sort,
-      handleClick: (option: any) => {
+      activeOption: filters.sort,
+      handleClick: (option: Option<string>) => {
         setReleases([]);
         setFilters((prev) => ({ ...prev, sort: option.id }));
       },
@@ -130,8 +129,8 @@ export const RecordsContainer = () => {
         { id: "desc", name: "Desc" },
         { id: "asc", name: "Asc" },
       ],
-      activeKey: filters.sort_order,
-      handleClick: (option: any) => {
+      activeOption: filters.sort_order,
+      handleClick: (option: Option<string>) => {
         setReleases([]);
         setFilters((prev) => ({ ...prev, sort_order: option.id }));
       },
@@ -156,24 +155,22 @@ export const RecordsContainer = () => {
           ))}
         </div>
       </section>
-      <div style={{ opacity: isLoading ? "0.5" : "1" }}>
-        <InfiniteScroll
-          dataLength={releases.length}
-          next={() => setCurrentPage((prev) => prev + 1)}
-          hasMore={currentPage < pages}
-          loader={<RecordsGrid loader />}
-          endMessage={
-            !!releases.length ? (
-              <p className="text-center">End</p>
-            ) : (
-              <RecordsGrid loader />
-            )
-          }
-          scrollThreshold={0.9}
-        >
-          <RecordsView releases={filterByColor(releases)} />
-        </InfiniteScroll>
-      </div>
+      <InfiniteScroll
+        dataLength={releases.length}
+        next={() => setCurrentPage((prev) => prev + 1)}
+        hasMore={currentPage < pages}
+        loader={<RecordsGrid loader />}
+        endMessage={
+          !!releases.length ? (
+            <p className="text-center">End</p>
+          ) : (
+            <RecordsGrid loader />
+          )
+        }
+        scrollThreshold={0.9}
+      >
+        <RecordsView releases={filterByColor(releases)} />
+      </InfiniteScroll>
     </div>
   );
 };

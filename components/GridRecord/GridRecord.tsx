@@ -17,7 +17,7 @@ export const GridRecord = ({ release }: GridRecordProps) => {
   } = release;
 
   return (
-    <div className="group relative col-span-1 max-w-full max-h-auto">
+    <div className="group relative col-span-1 bg-gray-200 max-w-full max-h-auto">
       <Image
         src={cover_image}
         alt="cover_image"
