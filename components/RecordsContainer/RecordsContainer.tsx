@@ -110,6 +110,34 @@ export const RecordsContainer = () => {
     },
   ];
 
+  const sortArray = [
+    {
+      title: "Sort by",
+      data: [
+        { id: "added", name: "Date added" },
+        { id: "artist", name: "Artists" },
+        { id: "title", name: "Title" },
+      ],
+      activeKey: filters.sort,
+      handleClick: (option: any) => {
+        setReleases([]);
+        setFilters((prev) => ({ ...prev, sort: option.id }));
+      },
+    },
+    {
+      title: "Sort order",
+      data: [
+        { id: "desc", name: "Desc" },
+        { id: "asc", name: "Asc" },
+      ],
+      activeKey: filters.sort_order,
+      handleClick: (option: any) => {
+        setReleases([]);
+        setFilters((prev) => ({ ...prev, sort_order: option.id }));
+      },
+    },
+  ];
+
   return (
     <div>
       <section>
@@ -117,6 +145,14 @@ export const RecordsContainer = () => {
         <div className="flex gap-4">
           {filtersArray.map((filter) => (
             <FilterGroup {...filter} key={filter.title} />
+          ))}
+        </div>
+      </section>
+      <section className="py-4">
+        <h2 className="text-lg font-bold mb-2">Sort</h2>
+        <div className="flex gap-4">
+          {sortArray.map((sortOption) => (
+            <FilterGroup {...sortOption} key={sortOption.title} />
           ))}
         </div>
       </section>
