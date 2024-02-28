@@ -1,4 +1,4 @@
-type ReleaseNote = { field_id: number; value: string };
+type ReleaseNote = { fieldId: number; value: string };
 
 export type ReleaseFormat = {
   name: string;
@@ -14,30 +14,30 @@ export type ReleaseArtist = {
   role: string;
   tracks: string;
   id: number;
-  resource_url: string;
+  resourceUrl: string;
 };
 
 type ReleaseLabel = {
   name: string;
   catno: string;
-  entity_type: string;
-  entity_type_name: string;
+  entityType: string;
+  entityTypeName: string;
   id: number;
-  resource_url: string;
+  resourceUrl: string;
 };
 
 type ReleaseFull = {
   id: number;
-  instance_id: number;
-  date_added: string;
+  instanceId: number;
+  dateAdded: string;
   rating: number;
-  basic_information: {
+  basicInformation: {
     id: number;
-    master_id: number;
-    master_url: string;
-    resource_url: string;
+    masterId: number;
+    masterUrl: string;
+    resourceUrl: string;
     thumb: string;
-    cover_image: string;
+    coverImage: string;
     title: string;
     year: number;
     formats: ReleaseFormat[];
@@ -46,19 +46,19 @@ type ReleaseFull = {
     genres: string[];
     styles: string[];
   };
-  folder_id: number;
+  folderId: number;
   notes: ReleaseNote[];
 };
 
 export type Release = Pick<
   ReleaseFull,
-  "instance_id" | "date_added" | "basic_information" | "folder_id"
+  "instanceId" | "dateAdded" | "basicInformation" | "folderId"
 >;
 
 type Pagination = {
   page: number;
   pages: number;
-  per_page: number;
+  perPage: number;
   items: number;
   urls: {
     last: string;
@@ -69,4 +69,11 @@ type Pagination = {
 export type CollectionResponse = {
   releases: ReleaseFull[];
   pagination: Pagination;
+};
+
+export type CollectionOptions = {
+  folder: number;
+  sort: string;
+  sortOrder: string;
+  page: number;
 };

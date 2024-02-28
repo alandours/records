@@ -59,6 +59,6 @@ export const COLORS: ColorsMap = {
 export const INITIAL_FILTERS = {
   folder: 0,
   sort: "added",
-  sort_order: "desc",
+  sortOrder: "desc",
   page: 1,
 };

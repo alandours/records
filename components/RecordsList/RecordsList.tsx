@@ -8,7 +8,7 @@ type RecordsListProps = {
 export const RecordsList = ({ releases }: RecordsListProps) => (
   <div className="grid grid-cols-2 gap-4">
     {releases.map((release) => (
-      <ListRecord release={release} key={release.instance_id} />
+      <ListRecord release={release} key={release.instanceId} />
     ))}
   </div>
 );

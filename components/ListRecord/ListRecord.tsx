@@ -13,14 +13,14 @@ type ListRecordProps = {
 
 export const ListRecord = ({ release }: ListRecordProps) => {
   const {
-    basic_information: { title, cover_image, artists, formats },
+    basicInformation: { title, coverImage, artists, formats },
   } = release;
 
   return (
     <div className="col-span-1 flex bg-gray-50 rounded-r-md shadow-sm">
       <Image
-        src={cover_image}
-        alt="cover_image"
+        src={coverImage}
+        alt={`${title} album cover`}
         className="aspect-square object-cover shadow-sm"
         width={150}
         height={150}

@@ -6,13 +6,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { FilterGroup } from "@/components/FilterGroup";
 import { RecordsGrid } from "@/components/RecordsGrid";
 import { RecordsList } from "@/components/RecordsList";
-import {
-  CollectionOptions,
-  fetchCollection,
-  fetchFolders,
-} from "@/app/actions";
+import { getCollections, getFolders } from "@/app/actions";
 import { INITIAL_FILTERS } from "@/constants";
-import { Folder, Option, Release } from "@/types";
+import { CollectionOptions, Folder, Option, Release } from "@/types";
 import { getRecordColor } from "@/utils";
 
 export const RecordsContainer = () => {
@@ -29,17 +25,17 @@ export const RecordsContainer = () => {
 
   const filterByColor = (releases: Release[]) => {
     switch (colorFilter) {
-      case "color_all":
+      case "colorAll":
         return releases;
       case "black":
         return releases.filter(
           (release) =>
-            getRecordColor(release.basic_information.formats[0]) === "black"
+            getRecordColor(release.basicInformation.formats[0]) === "black"
         );
       case "color":
         return releases.filter(
           (release) =>
-            getRecordColor(release.basic_information.formats[0]) !== "black"
+            getRecordColor(release.basicInformation.formats[0]) !== "black"
         );
     }
 
@@ -47,7 +43,7 @@ export const RecordsContainer = () => {
   };
 
   const fetchFoldersRequest = async () => {
-    const folders: Folder[] = await fetchFolders();
+    const folders: Folder[] = await getFolders();
     setAvailableFolders(folders);
   };
 
@@ -56,7 +52,10 @@ export const RecordsContainer = () => {
     currentPage: number
   ) => {
     setIsLoading(true);
-    const collection = await fetchCollection({ ...params, page: currentPage });
+    const collection = await getCollections({
+      ...params,
+      page: currentPage,
+    });
     setReleases((prev) => [...prev, ...collection.releases]);
     setPages(collection.pagination.pages);
     setIsLoading(false);
@@ -129,10 +128,10 @@ export const RecordsContainer = () => {
         { id: "desc", name: "Desc" },
         { id: "asc", name: "Asc" },
       ],
-      activeOption: filters.sort_order,
+      activeOption: filters.sortOrder,
       handleClick: (option: Option<string>) => {
         setReleases([]);
-        setFilters((prev) => ({ ...prev, sort_order: option.id }));
+        setFilters((prev) => ({ ...prev, sortOrder: option.id }));
       },
     },
   ];

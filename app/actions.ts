@@ -1,59 +1,54 @@
 "use server";
 
+import { Camelized, camelizeKeys } from "humps";
+
 import { AVAILABLE_FOLDERS } from "@/constants";
-import { CollectionResponse, FoldersResponse } from "@/types";
+import {
+  CollectionOptions,
+  CollectionResponse,
+  FoldersResponse,
+} from "@/types";
 
-export const fetchFolders = async () => {
-  const response = await fetch(
-    `https://api.discogs.com/users/${process.env.DISCOGS_USERNAME}/collection/folders`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Discogs token=${process.env.DISCOGS_TOKEN}`,
-      },
-    }
-  );
+const BASE_URL = "https://api.discogs.com";
 
-  const folders: FoldersResponse = await response.json();
-
-  return folders.folders.filter((folder) =>
-    AVAILABLE_FOLDERS.includes(folder.id)
-  );
+const PATHS = {
+  folders: `/users/${process.env.DISCOGS_USERNAME}/collection/folders`,
+  collection: ({ folder, sort, sortOrder, page }: CollectionOptions) =>
+    `/users/${process.env.DISCOGS_USERNAME}/collection/folders/${folder}/releases?sort=${sort}&sort_order=${sortOrder}&page=${page}&per_page=100`,
 };
 
-export type CollectionOptions = {
-  folder: number;
-  sort: string;
-  sort_order: string;
-  page: number;
+const HEADERS = {
+  "Content-Type": "application/json",
+  Authorization: `Discogs token=${process.env.DISCOGS_TOKEN}`,
 };
 
-export const fetchCollection = async ({
-  folder,
-  sort,
-  sort_order,
-  page,
-}: CollectionOptions) => {
-  const response = await fetch(
-    `https://api.discogs.com/users/${process.env.DISCOGS_USERNAME}/collection/folders/${folder}/releases?sort=${sort}&sort_order=${sort_order}&page=${page}&per_page=100`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Discogs token=${process.env.DISCOGS_TOKEN}`,
-      },
-    }
-  );
+const client = async <T>(endpoint: string): Promise<Camelized<T>> => {
+  const response = await fetch(`${BASE_URL}${endpoint}`, {
+    headers: HEADERS,
+  });
 
-  const { pagination, releases }: CollectionResponse = await response.json();
+  return camelizeKeys(await response.json());
+};
+
+export const getFolders = async () => {
+  const { folders } = await client<FoldersResponse>(PATHS.folders);
+
+  return folders.filter((folder) => AVAILABLE_FOLDERS.includes(folder.id));
+};
+
+export const getCollections = async (params: CollectionOptions) => {
+  const { pagination, releases } = await client<CollectionResponse>(
+    PATHS.collection(params)
+  );
 
   const filteredReleases = releases.map(
-    ({ instance_id, date_added, basic_information, folder_id }) => ({
-      instance_id,
-      date_added,
-      basic_information,
-      folder_id,
+    ({ instanceId, dateAdded, basicInformation, folderId }) => ({
+      instanceId,
+      dateAdded,
+      basicInformation,
+      folderId,
     })
   );
 
-  return { pagination, releases: filteredReleases };
+  return { pagination: camelizeKeys(pagination), releases: filteredReleases };
 };

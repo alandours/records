@@ -13,14 +13,14 @@ type GridRecordProps = {
 
 export const GridRecord = ({ release }: GridRecordProps) => {
   const {
-    basic_information: { title, cover_image, artists, formats },
+    basicInformation: { title, coverImage, artists, formats },
   } = release;
 
   return (
     <div className="group relative col-span-1 bg-gray-200 max-w-full max-h-auto">
       <Image
-        src={cover_image}
-        alt="cover_image"
+        src={coverImage}
+        alt={`${title} album cover`}
         className="aspect-square object-cover"
         width={500}
         height={500}

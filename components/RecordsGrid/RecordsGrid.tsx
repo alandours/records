@@ -23,7 +23,7 @@ export const RecordsGrid = ({ releases, loader = false }: RecordsGridProps) => {
       {loader
         ? items
         : releases?.map((release) => (
-            <GridRecord release={release} key={release.instance_id} />
+            <GridRecord release={release} key={release.instanceId} />
           ))}
     </div>
   );
