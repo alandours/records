@@ -11,10 +11,12 @@ import {
 
 const BASE_URL = "https://api.discogs.com";
 
+const RESULTS_PER_PAGE = 100;
+
 const PATHS = {
   folders: `/users/${process.env.DISCOGS_USERNAME}/collection/folders`,
   collection: ({ folder, sort, sortOrder, page }: CollectionOptions) =>
-    `/users/${process.env.DISCOGS_USERNAME}/collection/folders/${folder}/releases?sort=${sort}&sort_order=${sortOrder}&page=${page}&per_page=100`,
+    `/users/${process.env.DISCOGS_USERNAME}/collection/folders/${folder}/releases?sort=${sort}&sort_order=${sortOrder}&page=${page}&per_page=${RESULTS_PER_PAGE}`,
 };
 
 const HEADERS = {
