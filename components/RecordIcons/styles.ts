@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { theme } from "@/constants/theme";
+
 type RecordIconProps = {
   color?: string;
 };
@@ -42,12 +44,12 @@ export const CdIcon = styled(RecordIcon)`
 `;
 
 export const BoxsetIcon = styled(RecordIcon)`
-  background: black;
+  background: ${theme.colors.black.base};
   border-radius: 0;
 `;
 
 export const AllMediaIcon = styled(RecordIcon)`
-  border: 2px solid black;
+  border: 2px solid ${theme.colors.black.base};
   font-size: 0.5rem;
   padding: 0.25rem;
 `;

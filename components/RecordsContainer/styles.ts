@@ -4,7 +4,7 @@ export const Header = styled.header`
   margin: 0.5rem;
 
   @media (min-width: 640px) {
-    margin: 1rem;
+    margin: 3rem 1rem;
   }
 `;
 
@@ -12,15 +12,13 @@ export const Container = styled.div`
   max-width: 1200px;
 `;
 
-export const Section = styled.section`
-  & + & {
-    margin: 2rem 0;
-  }
-`;
-
-export const FiltersContainer = styled.div`
+export const FiltersContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
-  gap: 4;
+  gap: 1rem;
   justify-content: space-between;
+
+  & + & {
+    margin-top: 1rem;
+  }
 `;

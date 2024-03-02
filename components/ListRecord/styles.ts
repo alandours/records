@@ -1,8 +1,10 @@
 import NextImage from "next/image";
 import styled from "styled-components";
 
+import { theme } from "@/constants/theme";
+
 export const Container = styled.div`
-  background: lightgrey;
+  background: ${theme.colors.grey.light};
   border-bottom-left-radius: 0.375rem;
   border-bottom-right-radius: 0.375rem;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);

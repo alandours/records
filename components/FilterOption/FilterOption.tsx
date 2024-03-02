@@ -6,6 +6,7 @@ type FilterOptionProps = {
   name: string;
   active: boolean;
   handleClick: () => void;
+  minWidth?: string;
 };
 
 export const FilterOption = ({
@@ -14,8 +15,9 @@ export const FilterOption = ({
   name,
   active,
   handleClick,
+  minWidth,
 }: FilterOptionProps) => (
-  <FilterLabel htmlFor={id}>
+  <FilterLabel htmlFor={id} minWidth={minWidth}>
     {active && (
       <MotionSpan
         layoutId={name}

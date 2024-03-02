@@ -1,18 +1,14 @@
 import { FilterOption } from "@/components/FilterOption";
 import { Option } from "@/types";
 
-import {
-  FilterGroupContainer,
-  FilterGroupTitle,
-  FilterOptions,
-} from "./styles";
+import { FilterGroupTitle, FilterOptions } from "./styles";
 
 type FilterGroupProps = {
   title: string;
   data: Option<string | number>[];
   handleClick: (option: Option<string | number>) => void;
   activeOption: string | number;
-  fullRow: boolean;
+  minWidth?: string;
 };
 
 export const FilterGroup = ({
@@ -20,12 +16,11 @@ export const FilterGroup = ({
   handleClick,
   title,
   activeOption,
-  fullRow,
+  minWidth,
 }: FilterGroupProps) => (
-  <FilterGroupContainer
+  <div
     role="radiogroup"
     aria-labelledby={`filter-group-${title.toLowerCase()}`}
-    fullRow={fullRow}
   >
     <FilterGroupTitle id={`filter-group-${title.toLowerCase()}`}>
       {title}
@@ -39,8 +34,9 @@ export const FilterGroup = ({
           name={title}
           active={activeOption === option.id}
           handleClick={() => handleClick(option)}
+          minWidth={minWidth}
         />
       ))}
     </FilterOptions>
-  </FilterGroupContainer>
+  </div>
 );

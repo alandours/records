@@ -10,7 +10,7 @@ import { getCollections, getFolders } from "@/app/actions";
 import { INITIAL_FILTERS } from "@/constants";
 import { CollectionOptions, Folder, Option, Release } from "@/types";
 import { getRecordColor } from "@/utils";
-import { Container, FiltersContainer, Header, Section } from "./styles";
+import { Container, FiltersContainer, Header } from "./styles";
 
 export const RecordsContainer = () => {
   const [releases, setReleases] = useState<Release[]>([]);
@@ -76,18 +76,6 @@ export const RecordsContainer = () => {
 
   const filtersArray = [
     {
-      title: "View",
-      data: [
-        { id: "grid", name: "Grid" },
-        { id: "list", name: "List" },
-      ],
-      activeOption: view,
-      handleClick: (option: Option<string>) => {
-        setView(option.id);
-      },
-      fullRow: true,
-    },
-    {
       title: "Format",
       data: availableFolders,
       activeOption: filters.folder,
@@ -112,10 +100,10 @@ export const RecordsContainer = () => {
 
   const sortArray = [
     {
-      title: "Sort by",
+      title: "Sort",
       data: [
         { id: "added", name: "Date added" },
-        { id: "artist", name: "Artists" },
+        { id: "artist", name: "Artist" },
         { id: "title", name: "Title" },
       ],
       activeOption: filters.sort,
@@ -125,15 +113,30 @@ export const RecordsContainer = () => {
       },
     },
     {
-      title: "Sort order",
+      title: "",
       data: [
-        { id: "desc", name: "Desc" },
-        { id: "asc", name: "Asc" },
+        { id: "desc", name: "↓" },
+        { id: "asc", name: "↑" },
       ],
       activeOption: filters.sortOrder,
       handleClick: (option: Option<string>) => {
         setReleases([]);
         setFilters((prev) => ({ ...prev, sortOrder: option.id }));
+      },
+      minWidth: "2.25rem",
+    },
+  ];
+
+  const viewArray = [
+    {
+      title: "View",
+      data: [
+        { id: "grid", name: "Grid" },
+        { id: "list", name: "List" },
+      ],
+      activeOption: view,
+      handleClick: (option: Option<string>) => {
+        setView(option.id);
       },
     },
   ];
@@ -141,20 +144,21 @@ export const RecordsContainer = () => {
   return (
     <Container>
       <Header>
-        <Section>
-          <FiltersContainer>
-            {filtersArray.map((filter) => (
-              <FilterGroup {...filter} key={filter.title} />
-            ))}
-          </FiltersContainer>
-        </Section>
-        <Section>
+        <FiltersContainer>
+          {filtersArray.map((filter) => (
+            <FilterGroup {...filter} key={filter.title} />
+          ))}
+        </FiltersContainer>
+        <FiltersContainer>
           <FiltersContainer>
             {sortArray.map((sortOption) => (
               <FilterGroup {...sortOption} key={sortOption.title} />
             ))}
           </FiltersContainer>
-        </Section>
+          {viewArray.map((sortOption) => (
+            <FilterGroup {...sortOption} key={sortOption.title} />
+          ))}
+        </FiltersContainer>
       </Header>
       <InfiniteScroll
         dataLength={releases.length}

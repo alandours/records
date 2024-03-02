@@ -1,15 +1,17 @@
 import NextImage from "next/image";
 import styled from "styled-components";
 
+import { theme } from "@/constants/theme";
+
 export const Image = styled(NextImage)`
   aspect-ratio: 1 / 1;
   object-fit: cover;
 `;
 
 export const Overlay = styled.div`
-  background: black;
+  background: ${theme.colors.black.base};
   bottom: 0;
-  color: white;
+  color: ${theme.colors.white.base};
   display: flex;
   flex-direction: column;
   font-size: 0.75rem;
@@ -56,7 +58,7 @@ export const RecordColor = styled.div<RecordColorProps>`
 `;
 
 export const Container = styled.div`
-  background: lightgrey;
+  background: ${theme.colors.grey.light};
   max-height: auto;
   max-width: 100%;
   position: relative;

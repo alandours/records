@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { theme } from "@/constants/theme";
+
 export const GridContainer = styled.div`
   display: grid;
   gap: 0;
@@ -9,7 +11,7 @@ export const GridContainer = styled.div`
   @media (min-width: 640px) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.5rem;
-    margin: 1rem;
+    margin: 0 1rem;
   }
 
   @media (min-width: 1024px) {
@@ -18,7 +20,7 @@ export const GridContainer = styled.div`
 `;
 
 export const GridPlaceholder = styled.div`
-  background-color: lightgrey;
+  background-color: ${theme.colors.grey.light};
   grid-column: span 1;
 `;
 

@@ -1,21 +1,23 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-type FilterTextProps = {
-  active: boolean;
+import { theme } from "@/constants/theme";
+
+type FilterLabelProps = {
+  minWidth?: string;
 };
 
-export const FilterLabel = styled.label`
+export const FilterLabel = styled.label<FilterLabelProps>`
   cursor: pointer;
   display: flex;
-  min-width: 6rem;
+  min-width: ${({ minWidth }) => minWidth || "6.25rem"};
   position: relative;
   width: auto;
   -webkit-tap-highlight-color: transparent;
 `;
 
 export const MotionSpan = styled(motion.span)`
-  background: darkblue;
+  background: ${theme.colors.grey.dark};
   border-radius: 0.25rem;
   inset: 0;
   position: absolute;
@@ -27,8 +29,13 @@ export const FilterCheckbox = styled.input`
   width: 0;
 `;
 
+type FilterTextProps = {
+  active: boolean;
+};
+
 export const FilterText = styled.div<FilterTextProps>`
-  color: ${({ active }) => (active ? "white" : "black")};
+  color: ${({ active }) =>
+    active ? theme.colors.white.base : theme.colors.black.base};
   font-size: 0.875rem;
   font-weight: 500;
   padding: 0.375rem 0.75rem;
