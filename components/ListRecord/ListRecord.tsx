@@ -1,3 +1,4 @@
+import { RecordText } from "@/components/GridRecord/styles";
 import { RecordIcons } from "@/components/RecordIcons";
 import { ReleaseLink } from "@/components/ReleaseLink";
 import { ALL_MEDIA } from "@/constants";
@@ -28,8 +29,8 @@ export const ListRecord = ({ release }: ListRecordProps) => {
         <Image
           src={coverImage}
           alt={`${title} album cover`}
-          width={150}
-          height={150}
+          width={400}
+          height={400}
         />
         <Content>
           <div>
@@ -45,7 +46,7 @@ export const ListRecord = ({ release }: ListRecordProps) => {
                 {formatReleaseDescription(format) && (
                   <RecordIcons format={format} />
                 )}
-                {formatReleaseDescription(format)}
+                <RecordText>{formatReleaseDescription(format)}</RecordText>
               </Description>
             ))}
           </DescriptionContainer>

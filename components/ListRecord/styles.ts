@@ -3,17 +3,29 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background: lightgrey;
-  border-top-right-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
   border-bottom-right-radius: 0.375rem;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   display: flex;
+  flex-direction: column;
   width: 100%;
+
+  @media (min-width: 400px) {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.375rem;
+    flex-direction: row;
+  }
 `;
 
 export const Image = styled(NextImage)`
   aspect-ratio: 1 / 1;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   object-fit: cover;
+  max-width: 100%;
+
+  @media (min-width: 400px) {
+    max-width: 150px;
+  }
 `;
 
 export const Content = styled.div`
@@ -36,7 +48,11 @@ export const RecordTitle = styled.div`
 export const DescriptionContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.5rem;
+
+  @media (min-width: 678px) {
+    gap: 1rem;
+  }
 `;
 
 type DescriptionProps = {
@@ -47,6 +63,7 @@ export const Description = styled.div<DescriptionProps>`
   align-items: center;
   display: flex;
   gap: 0.25rem;
+  overflow: hidden;
 
   ${({ fullRow }) => fullRow && "flex-basis: 100%"};
 `;
