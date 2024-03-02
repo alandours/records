@@ -8,13 +8,12 @@ export const Container = styled.div`
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   display: flex;
   grid-column: span 1;
+  width: 100%;
 `;
 
 export const Image = styled(NextImage)`
   aspect-ratio: 1 / 1;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  //max-height: 150px;
-  //max-width: 150px;
   object-fit: cover;
 `;
 
