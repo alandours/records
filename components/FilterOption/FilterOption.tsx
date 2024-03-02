@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { FilterCheckbox, FilterLabel, FilterText, MotionSpan } from "./styles";
 
 type FilterOptionProps = {
   id: string;
@@ -15,35 +15,20 @@ export const FilterOption = ({
   active,
   handleClick,
 }: FilterOptionProps) => (
-  <label
-    htmlFor={id}
-    className="flex relative w-full cursor-pointer"
-    style={{
-      WebkitTapHighlightColor: "transparent",
-    }}
-  >
+  <FilterLabel htmlFor={id}>
     {active && (
-      <motion.span
+      <MotionSpan
         layoutId={name}
-        className="absolute inset-0 z-10 bg-blue-800"
-        style={{ borderRadius: 4 }}
         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
       />
     )}
-    <input
+    <FilterCheckbox
       type="radio"
       id={id}
       name={name}
       checked={active}
       onChange={handleClick}
-      className="w-0 h-0"
     />
-    <div
-      className={`relative z-30 text-sm font-medium text-center text-${
-        active ? "white" : "black"
-      } px-2.5 py-1.5 transition-colors w-full`}
-    >
-      {label}
-    </div>
-  </label>
+    <FilterText active={active}>{label}</FilterText>
+  </FilterLabel>
 );
