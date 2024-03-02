@@ -52,5 +52,5 @@ export const getCollections = async (params: CollectionOptions) => {
     })
   );
 
-  return { pagination: camelizeKeys(pagination), releases: filteredReleases };
+  return { pagination, releases: filteredReleases };
 };

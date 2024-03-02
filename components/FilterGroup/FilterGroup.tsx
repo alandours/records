@@ -5,8 +5,8 @@ import { FilterGroupTitle, FilterOptions } from "./styles";
 
 type FilterGroupProps = {
   title: string;
-  data: Option<string | number>[];
-  handleClick: (option: Option<string | number>) => void;
+  data: Option<string>[] | Option<number>[];
+  handleClick: (option: Option<any>) => void;
   activeOption: string | number;
   minWidth?: string;
 };

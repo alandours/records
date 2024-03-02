@@ -1,5 +1,4 @@
 import {
-  HIDDEN_ARTISTS,
   HIDDEN_FLAGS,
   HIDDEN_FREE_TEXT,
   COMMA_SEPARATOR,
@@ -14,13 +13,8 @@ const removeArtistInstanceNumber = (artist: ReleaseArtist): string =>
 
 const normalize = (str: string): string => str.toLowerCase().replace(" ", "");
 
-export const formatArtists = (artists: ReleaseArtist[]): string => {
-  const allowedArtists = artists.filter(
-    (artist) => !HIDDEN_ARTISTS.includes(normalize(artist.name))
-  );
-
-  return allowedArtists.map(removeArtistInstanceNumber).join(COMMA_SEPARATOR);
-};
+export const formatArtists = (artists: ReleaseArtist[]): string =>
+  artists.map(removeArtistInstanceNumber).join(COMMA_SEPARATOR);
 
 export const formatReleaseFlags = (format: ReleaseFormat): string => {
   const allowedDescriptions = format.descriptions?.filter(

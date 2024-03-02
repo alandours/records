@@ -8,6 +8,6 @@ export const ListContainer = styled.div`
 
   @media (min-width: 640px) {
     gap: 1rem;
-    margin: 0 1rem;
+    margin: 0.5rem 1rem;
   }
 `;

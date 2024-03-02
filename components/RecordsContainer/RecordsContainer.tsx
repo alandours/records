@@ -20,7 +20,6 @@ export const RecordsContainer = () => {
   const [availableFolders, setAvailableFolders] = useState<Folder[]>([]);
   const [view, setView] = useState<string>("grid");
   const [filters, setFilters] = useState(INITIAL_FILTERS);
-  const [isLoading, setIsLoading] = useState(true);
   const [colorFilter, setColorFilter] = useState("all");
 
   const RecordsView = view === "grid" ? RecordsGrid : RecordsList;
@@ -53,14 +52,12 @@ export const RecordsContainer = () => {
     params: CollectionOptions,
     currentPage: number
   ) => {
-    setIsLoading(true);
     const collection = await getCollections({
       ...params,
       page: currentPage,
     });
     setReleases((prev) => [...prev, ...collection.releases]);
     setPages(collection.pagination.pages);
-    setIsLoading(false);
   };
 
   useEffect(() => {

@@ -1,7 +1,5 @@
 export const AVAILABLE_FOLDERS = [0, 6467602, 6467605];
 
-export const HIDDEN_ARTISTS = [];
-
 export const HIDDEN_FLAGS = [
   '12"',
   "45rpm",
