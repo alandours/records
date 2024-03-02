@@ -10,6 +10,7 @@ import { getCollections, getFolders } from "@/app/actions";
 import { INITIAL_FILTERS } from "@/constants";
 import { CollectionOptions, Folder, Option, Release } from "@/types";
 import { getRecordColor } from "@/utils";
+import { FiltersContainer, Section, SectionTitle } from "./styles";
 
 export const RecordsContainer = () => {
   const [releases, setReleases] = useState<Release[]>([]);
@@ -139,22 +140,22 @@ export const RecordsContainer = () => {
 
   return (
     <div className="m-2 max-w-[1200px]">
-      <section>
-        <h2 className="text-lg font-bold mb-2">Filters</h2>
-        <div className="flex gap-4 justify-between flex-wrap">
+      <Section>
+        <SectionTitle>Filters</SectionTitle>
+        <FiltersContainer>
           {filtersArray.map((filter) => (
             <FilterGroup {...filter} key={filter.title} />
           ))}
-        </div>
-      </section>
-      <section className="py-4">
-        <h2 className="text-lg font-bold mb-2">Sort</h2>
-        <div className="flex gap-4">
+        </FiltersContainer>
+      </Section>
+      <Section>
+        <SectionTitle>Sort</SectionTitle>
+        <FiltersContainer>
           {sortArray.map((sortOption) => (
             <FilterGroup {...sortOption} key={sortOption.title} />
           ))}
-        </div>
-      </section>
+        </FiltersContainer>
+      </Section>
       <InfiniteScroll
         dataLength={releases.length}
         next={() => setCurrentPage((prev) => prev + 1)}
