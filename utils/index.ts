@@ -5,6 +5,7 @@ import {
   COMMA_SEPARATOR,
   FLAGS_SEPARATOR,
   COLORS,
+  ALL_MEDIA,
 } from "@/constants";
 import { ReleaseArtist, ReleaseFormat } from "@/types";
 
@@ -22,14 +23,14 @@ export const formatArtists = (artists: ReleaseArtist[]): string => {
 };
 
 export const formatReleaseFlags = (format: ReleaseFormat): string => {
-  const allowedDescriptions = format.descriptions.filter(
+  const allowedDescriptions = format.descriptions?.filter(
     (description) =>
       !HIDDEN_FLAGS.some((hiddenFlag) =>
         normalize(description).includes(hiddenFlag)
       )
   );
 
-  return allowedDescriptions.join(COMMA_SEPARATOR);
+  return allowedDescriptions ? allowedDescriptions.join(COMMA_SEPARATOR) : "";
 };
 
 const formatFreeText = (freeText: string, removeColorKey = true): string => {
@@ -51,14 +52,14 @@ export const formatReleaseDescription = (format: ReleaseFormat): string => {
   const flags = formatReleaseFlags(format);
   const text = formatFreeText(format.text || "");
 
-  let description = format.name;
+  let description = isFormat(format.name, ALL_MEDIA) ? "" : format.name;
 
   if (flags) {
-    description += `${FLAGS_SEPARATOR}${flags}`;
+    description += description ? `${FLAGS_SEPARATOR}${flags}` : flags;
   }
 
   if (text) {
-    description += `${FLAGS_SEPARATOR}${text}`;
+    description += description ? `${FLAGS_SEPARATOR}${text}` : text;
   }
 
   return description;
@@ -79,3 +80,14 @@ export const getRecordColor = (format: ReleaseFormat): string => {
 
 export const getReleaseUrl = (id: number): string =>
   `https://www.discogs.com/release/${id}`;
+
+export const isFormat = (formatName: string, format: string) =>
+  formatName.toLowerCase() === format;
+
+// export const getAllFormats = (formats: ReleaseFormat[]): ReleaseFormat[] => {
+//   const allowedFormats = formats.filter(
+//     (format) => !isFormat(format.name, ALL_MEDIA)
+//   );
+
+//   return allowedFormats;
+// };

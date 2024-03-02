@@ -1,11 +1,11 @@
 import Image from "next/image";
 
+import { RecordIcons } from "@/components/RecordIcons";
+import { ReleaseLink } from "@/components/ReleaseLink";
 import { Release } from "@/types";
-import {
-  formatArtists,
-  formatReleaseDescription,
-  getRecordColor,
-} from "@/utils";
+import { formatArtists, formatReleaseDescription } from "@/utils";
+
+import { Container, Content, Description, RecordTitle } from "./styles";
 
 type ListRecordProps = {
   release: Release;
@@ -13,33 +13,33 @@ type ListRecordProps = {
 
 export const ListRecord = ({ release }: ListRecordProps) => {
   const {
-    basicInformation: { title, coverImage, artists, formats },
+    basicInformation: { id, title, coverImage, artists, formats },
   } = release;
 
   return (
-    <div className="col-span-1 flex bg-gray-50 rounded-r-md shadow-sm">
-      <Image
-        src={coverImage}
-        alt={`${title} album cover`}
-        className="aspect-square object-cover shadow-sm"
-        width={150}
-        height={150}
-      />
-      <div className=" w-full text-sm p-4 flex flex-col gap-2">
-        <div>
-          <div className="text-ellipsis whitespace-nowrap overflow-hidden font-bold">
-            {title}
+    <ReleaseLink id={id}>
+      <Container>
+        <Image
+          src={coverImage}
+          alt={`${title} album cover`}
+          width={230}
+          height={230}
+        />
+        <Content>
+          <div>
+            <RecordTitle title={title}>{title}</RecordTitle>
+            <div>{formatArtists(artists)}</div>
           </div>
-          <div>{formatArtists(artists)}</div>
-        </div>
-        <div className="flex items-center gap-2">
-          <div
-            className="rounded-full w-4 h-4 flex justify-center items-center shadow-md"
-            style={{ background: getRecordColor(formats[0]) }}
-          />
-          {formatReleaseDescription(formats[0])}
-        </div>
-      </div>
-    </div>
+          {formats.map((format, index) => (
+            <Description key={index}>
+              {formatReleaseDescription(format) && (
+                <RecordIcons format={format} />
+              )}
+              {formatReleaseDescription(format)}
+            </Description>
+          ))}
+        </Content>
+      </Container>
+    </ReleaseLink>
   );
 };
