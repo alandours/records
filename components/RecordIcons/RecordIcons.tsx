@@ -1,7 +1,13 @@
 import { ReleaseFormat } from "@/types";
 import { getRecordColor } from "@/utils";
 
-import { AllMediaIcon, BoxsetIcon, CdIcon, VinylIcon } from "./styles";
+import {
+  AllMediaIcon,
+  BoxsetIcon,
+  CdIcon,
+  IconsContainer,
+  VinylIcon,
+} from "./styles";
 
 type RecordIconsProps = {
   format: ReleaseFormat;
@@ -21,7 +27,7 @@ const renderIcon = (format: ReleaseFormat) => {
 };
 
 export const RecordIcons = ({ format }: RecordIconsProps) => (
-  <div className="flex">
+  <IconsContainer>
     {[...Array(Number(format.qty))].map((_, index) => renderIcon(format))}
-  </div>
+  </IconsContainer>
 );

@@ -4,6 +4,10 @@ type RecordIconProps = {
   color?: string;
 };
 
+export const IconsContainer = styled.div`
+  display: flex;
+`;
+
 export const RecordIcon = styled.div<RecordIconProps>`
   align-items: center;
   border: 0;

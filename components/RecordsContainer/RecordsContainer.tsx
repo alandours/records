@@ -10,7 +10,7 @@ import { getCollections, getFolders } from "@/app/actions";
 import { INITIAL_FILTERS } from "@/constants";
 import { CollectionOptions, Folder, Option, Release } from "@/types";
 import { getRecordColor } from "@/utils";
-import { FiltersContainer, Section, SectionTitle } from "./styles";
+import { Container, FiltersContainer, Section, SectionTitle } from "./styles";
 
 export const RecordsContainer = () => {
   const [releases, setReleases] = useState<Release[]>([]);
@@ -139,7 +139,7 @@ export const RecordsContainer = () => {
   ];
 
   return (
-    <div className="m-2 max-w-[1200px]">
+    <Container>
       <Section>
         <SectionTitle>Filters</SectionTitle>
         <FiltersContainer>
@@ -172,6 +172,6 @@ export const RecordsContainer = () => {
       >
         <RecordsView releases={filterByColor(releases)} />
       </InfiniteScroll>
-    </div>
+    </Container>
   );
 };

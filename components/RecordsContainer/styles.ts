@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  margin: 0.5rem;
+  max-width: 1200px;
+`;
+
 export const Section = styled.section`
   & + & {
     margin: 1rem 0;
