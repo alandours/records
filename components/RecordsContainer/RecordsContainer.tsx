@@ -10,7 +10,7 @@ import { getCollections, getFolders } from "@/app/actions";
 import { INITIAL_FILTERS } from "@/constants";
 import { CollectionOptions, Folder, Option, Release } from "@/types";
 import { getRecordColor } from "@/utils";
-import { Container, FiltersContainer, Section, SectionTitle } from "./styles";
+import { Container, FiltersContainer, Section } from "./styles";
 
 export const RecordsContainer = () => {
   const [releases, setReleases] = useState<Release[]>([]);
@@ -141,7 +141,6 @@ export const RecordsContainer = () => {
   return (
     <Container>
       <Section>
-        <SectionTitle>Filters</SectionTitle>
         <FiltersContainer>
           {filtersArray.map((filter) => (
             <FilterGroup {...filter} key={filter.title} />
@@ -149,7 +148,6 @@ export const RecordsContainer = () => {
         </FiltersContainer>
       </Section>
       <Section>
-        <SectionTitle>Sort</SectionTitle>
         <FiltersContainer>
           {sortArray.map((sortOption) => (
             <FilterGroup {...sortOption} key={sortOption.title} />

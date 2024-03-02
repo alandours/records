@@ -6,11 +6,17 @@ import { Link } from "./styles";
 
 type ReleaseLinkProps = {
   id: number;
+  span?: number;
   children: ReactNode;
 };
 
-export const ReleaseLink = ({ id, children }: ReleaseLinkProps) => (
-  <Link href={getReleaseUrl(id)} target="_blank" rel="noopener noreferrer">
+export const ReleaseLink = ({ id, span = 1, children }: ReleaseLinkProps) => (
+  <Link
+    href={getReleaseUrl(id)}
+    target="_blank"
+    rel="noopener noreferrer"
+    span={span}
+  >
     {children}
   </Link>
 );

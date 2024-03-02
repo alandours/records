@@ -6,6 +6,7 @@ type RecordIconProps = {
 
 export const IconsContainer = styled.div`
   display: flex;
+  margin-right: 0.25rem;
 `;
 
 export const RecordIcon = styled.div<RecordIconProps>`
@@ -46,7 +47,7 @@ export const BoxsetIcon = styled(RecordIcon)`
 `;
 
 export const AllMediaIcon = styled(RecordIcon)`
-  border: 4px solid black;
+  border: 2px solid black;
   font-size: 0.5rem;
   padding: 0.25rem;
 `;

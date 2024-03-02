@@ -60,7 +60,6 @@ export const Container = styled.div`
   max-height: auto;
   max-width: 100%;
   position: relative;
-  grid-column: span 1;
 
   &:hover ${Overlay} {
     opacity: 0.8;
