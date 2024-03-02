@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type GridContainerProps = {
-  isEmpty: boolean;
+  isEmpty?: boolean;
 };
 
 export const GridContainer = styled.div<GridContainerProps>`
