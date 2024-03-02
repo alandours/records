@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-import { theme } from "@/constants/theme";
+type GridContainerProps = {
+  isEmpty: boolean;
+};
 
-export const GridContainer = styled.div`
+export const GridContainer = styled.div<GridContainerProps>`
   display: grid;
   gap: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -11,22 +13,12 @@ export const GridContainer = styled.div`
   @media (min-width: 640px) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.5rem;
-    margin: 0 1rem;
+    margin: 0.5rem 1rem;
+
+    ${({ isEmpty }) => isEmpty && "margin: 0 1rem"};
   }
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
-`;
-
-export const GridPlaceholder = styled.div`
-  background-color: ${theme.colors.grey.light};
-  grid-column: span 1;
-`;
-
-export const GridPlaceholderInner = styled.div`
-  aspect-ratio: 1 / 1;
-  height: auto;
-  max-width: 100%;
-  width: 500px;
 `;

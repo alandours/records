@@ -5,6 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import { FilterGroup } from "@/components/FilterGroup";
 import { RecordsGrid } from "@/components/RecordsGrid";
+import { RecordsGridLoader } from "@/components/RecordsGridLoader";
 import { RecordsList } from "@/components/RecordsList";
 import { getCollections, getFolders } from "@/app/actions";
 import { INITIAL_FILTERS } from "@/constants";
@@ -164,12 +165,12 @@ export const RecordsContainer = () => {
         dataLength={releases.length}
         next={() => setCurrentPage((prev) => prev + 1)}
         hasMore={currentPage < pages}
-        loader={<RecordsGrid loader />}
+        loader={<RecordsGridLoader />}
         endMessage={
           !!releases.length ? (
             <p className="text-center">End</p>
           ) : (
-            <RecordsGrid loader />
+            <RecordsGridLoader />
           )
         }
         scrollThreshold={0.9}
