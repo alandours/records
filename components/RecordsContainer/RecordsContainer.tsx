@@ -84,6 +84,7 @@ export const RecordsContainer = () => {
       handleClick: (option: Option<string>) => {
         setView(option.id);
       },
+      fullRow: true,
     },
     {
       title: "Format",
@@ -140,7 +141,7 @@ export const RecordsContainer = () => {
     <div className="m-2 max-w-[1200px]">
       <section>
         <h2 className="text-lg font-bold mb-2">Filters</h2>
-        <div className="flex gap-4">
+        <div className="flex gap-4 justify-between flex-wrap">
           {filtersArray.map((filter) => (
             <FilterGroup {...filter} key={filter.title} />
           ))}

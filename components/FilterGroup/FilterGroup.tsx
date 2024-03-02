@@ -1,11 +1,18 @@
 import { FilterOption } from "@/components/FilterOption";
 import { Option } from "@/types";
 
+import {
+  FilterGroupContainer,
+  FilterGroupTitle,
+  FilterOptions,
+} from "./styles";
+
 type FilterGroupProps = {
   title: string;
   data: Option<string | number>[];
   handleClick: (option: Option<string | number>) => void;
   activeOption: string | number;
+  fullRow: boolean;
 };
 
 export const FilterGroup = ({
@@ -13,16 +20,17 @@ export const FilterGroup = ({
   handleClick,
   title,
   activeOption,
+  fullRow,
 }: FilterGroupProps) => (
-  <div
-    className=""
+  <FilterGroupContainer
     role="radiogroup"
     aria-labelledby={`filter-group-${title.toLowerCase()}`}
+    fullRow={fullRow}
   >
-    <div id={`filter-group-${title.toLowerCase()}`} className="mb-2">
+    <FilterGroupTitle id={`filter-group-${title.toLowerCase()}`}>
       {title}
-    </div>
-    <div className="flex bg-blue-100 p-1.5 rounded-md w-80">
+    </FilterGroupTitle>
+    <FilterOptions>
       {data.map((option) => (
         <FilterOption
           id={`${title.toLowerCase()}-${option.id}`}
@@ -33,6 +41,6 @@ export const FilterGroup = ({
           handleClick={() => handleClick(option)}
         />
       ))}
-    </div>
-  </div>
+    </FilterOptions>
+  </FilterGroupContainer>
 );
