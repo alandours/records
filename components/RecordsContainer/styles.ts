@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Header = styled.header`
   margin: 0.5rem;
+
+  @media (min-width: 640px) {
+    margin: 1rem;
+  }
+`;
+
+export const Container = styled.div`
   max-width: 1200px;
 `;
 

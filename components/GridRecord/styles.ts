@@ -61,11 +61,11 @@ export const Container = styled.div`
   max-width: 100%;
   position: relative;
 
-  &:hover ${Overlay} {
+  &:hover ${Overlay}, &:active ${Overlay} {
     opacity: 0.8;
   }
 
-  &:hover ${RecordColor} {
+  &:hover ${RecordColor}, &:active ${RecordColor} {
     opacity: 1;
   }
 `;

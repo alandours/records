@@ -2,12 +2,14 @@ import styled from "styled-components";
 
 export const GridContainer = styled.div`
   display: grid;
-  gap: 0.5rem;
+  gap: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 0.5rem 0;
+  margin: 0;
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin: 1rem;
   }
 
   @media (min-width: 1024px) {

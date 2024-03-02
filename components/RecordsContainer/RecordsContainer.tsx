@@ -10,7 +10,7 @@ import { getCollections, getFolders } from "@/app/actions";
 import { INITIAL_FILTERS } from "@/constants";
 import { CollectionOptions, Folder, Option, Release } from "@/types";
 import { getRecordColor } from "@/utils";
-import { Container, FiltersContainer, Section } from "./styles";
+import { Container, FiltersContainer, Header, Section } from "./styles";
 
 export const RecordsContainer = () => {
   const [releases, setReleases] = useState<Release[]>([]);
@@ -140,20 +140,22 @@ export const RecordsContainer = () => {
 
   return (
     <Container>
-      <Section>
-        <FiltersContainer>
-          {filtersArray.map((filter) => (
-            <FilterGroup {...filter} key={filter.title} />
-          ))}
-        </FiltersContainer>
-      </Section>
-      <Section>
-        <FiltersContainer>
-          {sortArray.map((sortOption) => (
-            <FilterGroup {...sortOption} key={sortOption.title} />
-          ))}
-        </FiltersContainer>
-      </Section>
+      <Header>
+        <Section>
+          <FiltersContainer>
+            {filtersArray.map((filter) => (
+              <FilterGroup {...filter} key={filter.title} />
+            ))}
+          </FiltersContainer>
+        </Section>
+        <Section>
+          <FiltersContainer>
+            {sortArray.map((sortOption) => (
+              <FilterGroup {...sortOption} key={sortOption.title} />
+            ))}
+          </FiltersContainer>
+        </Section>
+      </Header>
       <InfiniteScroll
         dataLength={releases.length}
         next={() => setCurrentPage((prev) => prev + 1)}
