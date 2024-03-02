@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+import { ReleaseLink } from "@/components/ReleaseLink";
 import { Release } from "@/types";
 import {
   formatArtists,
@@ -7,53 +6,49 @@ import {
   getRecordColor,
 } from "@/utils";
 
+import {
+  Container,
+  Image,
+  Overlay,
+  RecordColor,
+  RecordText,
+  RecordTitle,
+} from "./styles";
+
 type GridRecordProps = {
   release: Release;
 };
 
 export const GridRecord = ({ release }: GridRecordProps) => {
   const {
-    basicInformation: { title, coverImage, artists, formats },
+    basicInformation: { id, title, coverImage, artists, formats },
   } = release;
 
   return (
-    <div className="group relative col-span-1 bg-gray-200 max-w-full max-h-auto">
-      <Image
-        src={coverImage}
-        alt={`${title} album cover`}
-        className="aspect-square object-cover"
-        width={500}
-        height={500}
-      />
-      <div className="absolute bottom-0 z-20 w-full p-3 gap-2 flex flex-col bg-black text-blue-50 text-xs opacity-0 group-hover:opacity-80 transition-opacity duration-300">
-        <div>
-          <div
-            className="text-ellipsis whitespace-nowrap overflow-hidden font-bold"
-            title={title}
-          >
-            {title}
-          </div>
-          <div
-            className="text-ellipsis whitespace-nowrap overflow-hidden"
-            title={formatArtists(artists)}
-          >
-            {formatArtists(artists)}
-          </div>
-        </div>
-        <div
-          className="text-ellipsis whitespace-nowrap overflow-hidden"
-          title={formatReleaseDescription(formats[0])}
-        >
-          {formatReleaseDescription(formats[0])}
-        </div>
-      </div>
-
-      {getRecordColor(formats[0]) !== "black" && (
-        <div
-          className="absolute top-3 right-3 rounded-full w-8 h-8 shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style={{ background: getRecordColor(formats[0]) }}
+    <ReleaseLink id={id}>
+      <Container>
+        <Image
+          src={coverImage}
+          alt={`${title} album cover`}
+          width={500}
+          height={500}
         />
-      )}
-    </div>
+        <Overlay>
+          <div>
+            <RecordTitle title={title}>{title}</RecordTitle>
+            <RecordText title={formatArtists(artists)}>
+              {formatArtists(artists)}
+            </RecordText>
+          </div>
+          <RecordText title={formatReleaseDescription(formats[0])}>
+            {formatReleaseDescription(formats[0])}
+          </RecordText>
+        </Overlay>
+
+        {getRecordColor(formats[0]) !== "black" && (
+          <RecordColor color={getRecordColor(formats[0])} />
+        )}
+      </Container>
+    </ReleaseLink>
   );
 };

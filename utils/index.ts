@@ -76,3 +76,6 @@ export const getRecordColor = (format: ReleaseFormat): string => {
 
   return colorKey ? COLORS[colorKey] : "black";
 };
+
+export const getReleaseUrl = (id: number): string =>
+  `https://www.discogs.com/release/${id}`;
