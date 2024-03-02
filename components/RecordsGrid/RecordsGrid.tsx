@@ -1,6 +1,8 @@
 import { GridRecord } from "@/components/GridRecord";
 import { Release } from "@/types";
 
+import { GridContainer, GridPlaceholder, GridPlaceholderInner } from "./styles";
+
 type RecordsGridProps =
   | {
       releases: Release[];
@@ -13,18 +15,18 @@ type RecordsGridProps =
 
 export const RecordsGrid = ({ releases, loader = false }: RecordsGridProps) => {
   const items = [...Array(20)].map((_, index) => (
-    <div className="col-span-1 bg-gray-200" key={index}>
-      <div className="aspect-square w-[500px] max-w-full h-auto" />
-    </div>
+    <GridPlaceholder key={index}>
+      <GridPlaceholderInner />
+    </GridPlaceholder>
   ));
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2 my-2">
+    <GridContainer>
       {loader
         ? items
         : releases?.map((release) => (
             <GridRecord release={release} key={release.instanceId} />
           ))}
-    </div>
+    </GridContainer>
   );
 };
