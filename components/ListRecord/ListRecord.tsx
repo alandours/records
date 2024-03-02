@@ -1,11 +1,17 @@
-import Image from "next/image";
-
 import { RecordIcons } from "@/components/RecordIcons";
 import { ReleaseLink } from "@/components/ReleaseLink";
+import { ALL_MEDIA } from "@/constants";
 import { Release } from "@/types";
-import { formatArtists, formatReleaseDescription } from "@/utils";
+import { formatArtists, formatReleaseDescription, isFormat } from "@/utils";
 
-import { Container, Content, Description, RecordTitle } from "./styles";
+import {
+  Container,
+  Content,
+  Description,
+  DescriptionContainer,
+  Image,
+  RecordTitle,
+} from "./styles";
 
 type ListRecordProps = {
   release: Release;
@@ -22,22 +28,27 @@ export const ListRecord = ({ release }: ListRecordProps) => {
         <Image
           src={coverImage}
           alt={`${title} album cover`}
-          width={230}
-          height={230}
+          width={150}
+          height={150}
         />
         <Content>
           <div>
             <RecordTitle title={title}>{title}</RecordTitle>
             <div>{formatArtists(artists)}</div>
           </div>
-          {formats.map((format, index) => (
-            <Description key={index}>
-              {formatReleaseDescription(format) && (
-                <RecordIcons format={format} />
-              )}
-              {formatReleaseDescription(format)}
-            </Description>
-          ))}
+          <DescriptionContainer>
+            {formats.map((format, index) => (
+              <Description
+                key={index}
+                fullRow={isFormat(format.name, ALL_MEDIA)}
+              >
+                {formatReleaseDescription(format) && (
+                  <RecordIcons format={format} />
+                )}
+                {formatReleaseDescription(format)}
+              </Description>
+            ))}
+          </DescriptionContainer>
         </Content>
       </Container>
     </ReleaseLink>
