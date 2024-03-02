@@ -1,11 +1,9 @@
 import { RecordsContainer } from "@/components/RecordsContainer";
 
-import { HomeContainer } from "./styles";
-
 export default async function Home() {
   return (
-    <HomeContainer>
+    <div className="flex flex-col items-center py-4">
       <RecordsContainer />
-    </HomeContainer>
+    </div>
   );
 }
