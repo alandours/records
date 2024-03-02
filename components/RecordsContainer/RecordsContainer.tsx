@@ -104,7 +104,7 @@ export const RecordsContainer = () => {
       data: [
         { id: "added", name: "Date added" },
         { id: "artist", name: "Artist" },
-        { id: "title", name: "Title" },
+        { id: "title", name: "Album" },
       ],
       activeOption: filters.sort,
       handleClick: (option: Option<string>) => {
@@ -115,8 +115,8 @@ export const RecordsContainer = () => {
     {
       title: "",
       data: [
-        { id: "desc", name: "↓" },
-        { id: "asc", name: "↑" },
+        { id: "desc", name: "↓", a11yLabel: "Descending" },
+        { id: "asc", name: "↑", a11yLabel: "Ascending" },
       ],
       activeOption: filters.sortOrder,
       handleClick: (option: Option<string>) => {
@@ -131,8 +131,8 @@ export const RecordsContainer = () => {
     {
       title: "View",
       data: [
-        { id: "grid", name: "Grid" },
-        { id: "list", name: "List" },
+        { id: "grid", name: "Grid", a11yLabel: "View as grid" },
+        { id: "list", name: "List", a11yLabel: "View as list" },
       ],
       activeOption: view,
       handleClick: (option: Option<string>) => {

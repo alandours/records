@@ -7,6 +7,7 @@ type FilterOptionProps = {
   active: boolean;
   handleClick: () => void;
   minWidth?: string;
+  a11yLabel?: string;
 };
 
 export const FilterOption = ({
@@ -16,8 +17,9 @@ export const FilterOption = ({
   active,
   handleClick,
   minWidth,
+  a11yLabel,
 }: FilterOptionProps) => (
-  <FilterLabel htmlFor={id} minWidth={minWidth}>
+  <FilterLabel htmlFor={id} minWidth={minWidth} title={a11yLabel}>
     {active && (
       <MotionSpan
         layoutId={name}
@@ -30,6 +32,7 @@ export const FilterOption = ({
       name={name}
       checked={active}
       onChange={handleClick}
+      aria-label={a11yLabel}
     />
     <FilterText active={active}>{label}</FilterText>
   </FilterLabel>

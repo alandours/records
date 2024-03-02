@@ -35,6 +35,7 @@ export const FilterGroup = ({
           active={activeOption === option.id}
           handleClick={() => handleClick(option)}
           minWidth={minWidth}
+          a11yLabel={option.a11yLabel}
         />
       ))}
     </FilterOptions>
