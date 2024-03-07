@@ -17,11 +17,15 @@ export const FilterLabel = styled.label<FilterLabelProps>`
 `;
 
 export const MotionSpan = styled(motion.span)`
-  background: ${theme.colors.grey.dark};
+  background: ${theme.light.secondary.color};
   border-radius: 0.25rem;
   inset: 0;
   position: absolute;
   z-index: 10;
+
+  @media (prefers-color-scheme: dark) {
+    background: ${theme.dark.secondary.color};
+  }
 `;
 
 export const FilterCheckbox = styled.input`
@@ -35,7 +39,7 @@ type FilterTextProps = {
 
 export const FilterText = styled.div<FilterTextProps>`
   color: ${({ active }) =>
-    active ? theme.colors.white.base : theme.colors.black.base};
+    active ? theme.light.secondary.background : theme.light.secondary.color};
   font-size: 0.875rem;
   font-weight: 500;
   padding: 0.375rem 0.75rem;
@@ -47,4 +51,9 @@ export const FilterText = styled.div<FilterTextProps>`
   transition-property: color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 600ms;
+
+  @media (prefers-color-scheme: dark) {
+    color: ${({ active }) =>
+      active ? theme.dark.secondary.background : theme.dark.secondary.color};
+  }
 `;

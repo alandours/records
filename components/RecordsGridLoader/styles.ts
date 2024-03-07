@@ -3,8 +3,12 @@ import styled from "styled-components";
 import { theme } from "@/constants/theme";
 
 export const GridPlaceholder = styled.div`
-  background-color: ${theme.colors.grey.light};
+  background: ${theme.light.secondary.background};
   grid-column: span 1;
+
+  @media (prefers-color-scheme: dark) {
+    background: ${theme.dark.secondary.background};
+  }
 `;
 
 export const GridPlaceholderInner = styled.div`

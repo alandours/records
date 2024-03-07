@@ -11,7 +11,7 @@ import { getCollections, getFolders } from "@/app/actions";
 import { INITIAL_FILTERS } from "@/constants";
 import { CollectionOptions, Folder, Option, Release } from "@/types";
 import { getRecordColor } from "@/utils";
-import { Container, FiltersContainer, Header } from "./styles";
+import { Container, FiltersContainer, Header, Main } from "./styles";
 
 export const RecordsContainer = () => {
   const [releases, setReleases] = useState<Release[]>([]);
@@ -140,40 +140,42 @@ export const RecordsContainer = () => {
   ];
 
   return (
-    <Container>
-      <Header>
-        <FiltersContainer>
-          {filtersArray.map((filter) => (
-            <FilterGroup {...filter} key={filter.title} />
-          ))}
-        </FiltersContainer>
-        <FiltersContainer>
+    <Main>
+      <Container>
+        <Header>
           <FiltersContainer>
-            {sortArray.map((sortOption) => (
+            {filtersArray.map((filter) => (
+              <FilterGroup {...filter} key={filter.title} />
+            ))}
+          </FiltersContainer>
+          <FiltersContainer>
+            <FiltersContainer>
+              {sortArray.map((sortOption) => (
+                <FilterGroup {...sortOption} key={sortOption.title} />
+              ))}
+            </FiltersContainer>
+            {viewArray.map((sortOption) => (
               <FilterGroup {...sortOption} key={sortOption.title} />
             ))}
           </FiltersContainer>
-          {viewArray.map((sortOption) => (
-            <FilterGroup {...sortOption} key={sortOption.title} />
-          ))}
-        </FiltersContainer>
-      </Header>
-      <InfiniteScroll
-        dataLength={releases.length}
-        next={() => setCurrentPage((prev) => prev + 1)}
-        hasMore={currentPage < pages}
-        loader={<RecordsGridLoader />}
-        endMessage={
-          !!releases.length ? (
-            <p className="text-center">End</p>
-          ) : (
-            <RecordsGridLoader />
-          )
-        }
-        scrollThreshold={0.9}
-      >
-        <RecordsView releases={filterByColor(releases)} />
-      </InfiniteScroll>
-    </Container>
+        </Header>
+        <InfiniteScroll
+          dataLength={releases.length}
+          next={() => setCurrentPage((prev) => prev + 1)}
+          hasMore={currentPage < pages}
+          loader={<RecordsGridLoader />}
+          endMessage={
+            !!releases.length ? (
+              <p className="text-center">End</p>
+            ) : (
+              <RecordsGridLoader />
+            )
+          }
+          scrollThreshold={0.9}
+        >
+          <RecordsView releases={filterByColor(releases)} />
+        </InfiniteScroll>
+      </Container>
+    </Main>
   );
 };

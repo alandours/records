@@ -4,13 +4,19 @@ import styled from "styled-components";
 import { theme } from "@/constants/theme";
 
 export const Container = styled.div`
-  background: ${theme.colors.grey.light};
+  background: ${theme.light.secondary.background};
   border-bottom-left-radius: 0.375rem;
   border-bottom-right-radius: 0.375rem;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  color: ${theme.light.secondary.color};
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  @media (prefers-color-scheme: dark) {
+    background: ${theme.dark.secondary.background};
+    color: ${theme.dark.secondary.color};
+  }
 
   @media (min-width: 400px) {
     border-bottom-left-radius: 0;

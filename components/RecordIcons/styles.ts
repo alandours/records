@@ -44,12 +44,16 @@ export const CdIcon = styled(RecordIcon)`
 `;
 
 export const BoxsetIcon = styled(RecordIcon)`
-  background: ${theme.colors.black.base};
+  background: ${theme.common.black.background};
   border-radius: 0;
 `;
 
 export const AllMediaIcon = styled(RecordIcon)`
-  border: 2px solid ${theme.colors.black.base};
+  border: 2px solid ${theme.light.secondary.color};
   font-size: 0.5rem;
   padding: 0.25rem;
+
+  @media (prefers-color-scheme: dark) {
+    border: 2px solid ${theme.dark.secondary.color};
+  }
 `;

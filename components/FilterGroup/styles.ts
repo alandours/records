@@ -9,8 +9,12 @@ export const FilterGroupTitle = styled.div`
 
 export const FilterOptions = styled.div`
   display: flex;
-  background: ${theme.colors.grey.light};
+  background: ${theme.light.secondary.background};
   padding: 0.375rem;
   border-radius: 0.375rem;
   width: fit-content;
+
+  @media (prefers-color-scheme: dark) {
+    background: ${theme.dark.secondary.background};
+  }
 `;

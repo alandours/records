@@ -9,9 +9,9 @@ export const Image = styled(NextImage)`
 `;
 
 export const Overlay = styled.div`
-  background: ${theme.colors.black.base};
+  background: ${theme.common.black.background};
   bottom: 0;
-  color: ${theme.colors.white.base};
+  color: ${theme.common.black.color};
   display: flex;
   flex-direction: column;
   font-size: 0.75rem;
@@ -58,10 +58,14 @@ export const RecordColor = styled.div<RecordColorProps>`
 `;
 
 export const Container = styled.div`
-  background: ${theme.colors.grey.light};
+  background: ${theme.light.secondary.background};
   max-height: auto;
   max-width: 100%;
   position: relative;
+
+  @media (prefers-color-scheme: dark) {
+    background: ${theme.dark.secondary.background};
+  }
 
   &:hover ${Overlay}, &:active ${Overlay} {
     opacity: 0.8;

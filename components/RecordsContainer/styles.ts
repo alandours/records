@@ -1,3 +1,4 @@
+import { theme } from "@/constants/theme";
 import styled from "styled-components";
 
 export const Header = styled.header`
@@ -5,6 +6,19 @@ export const Header = styled.header`
 
   @media (min-width: 640px) {
     margin: 3rem 1rem;
+  }
+`;
+
+export const Main = styled.main`
+  color: ${theme.light.main.color};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: ${theme.light.main.background};
+
+  @media (prefers-color-scheme: dark) {
+    color: ${theme.dark.main.color};
+    background: ${theme.dark.main.background};
   }
 `;
 

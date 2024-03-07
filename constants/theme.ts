@@ -1,16 +1,34 @@
-const colors = {
+const common = {
   black: {
-    base: "#000000",
+    background: "#000000",
+    color: "#ffffff",
   },
-  white: {
-    base: "#ffffff",
+};
+
+const light = {
+  main: {
+    background: "#f7f7f7",
+    color: "#080808",
   },
-  grey: {
-    dark: "#111111",
-    light: "#eaeaea",
+  secondary: {
+    background: "#e5e5e5",
+    color: "#262626",
+  },
+};
+
+const dark = {
+  main: {
+    background: "#080808",
+    color: "#f7f7f7",
+  },
+  secondary: {
+    background: "#262626",
+    color: "#e5e5e5",
   },
 };
 
 export const theme = {
-  colors,
+  common,
+  light,
+  dark,
 };
