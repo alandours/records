@@ -7,7 +7,7 @@ import {
   ALL_MEDIA,
 } from "@/constants";
 import { Color } from "@/constants/enums";
-import { Release, ReleaseArtist, ReleaseFormat } from "@/types";
+import type { Release, ReleaseArtist, ReleaseFormat } from "@/types";
 
 const removeArtistInstanceNumber = (artist: ReleaseArtist): string =>
   artist.name.replace(/\W\([0-9]+\)$/, "");

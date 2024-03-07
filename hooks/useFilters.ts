@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { FILTER_OPTIONS, INITIAL_FILTERS } from "@/constants";
-import { CollectionOptions, Folder, Option, Release } from "@/types";
+import type { CollectionOptions, Folder, Option, Release } from "@/types";
 import { getCollections, getFolders } from "@/app/actions";
 import { Color, View } from "@/constants/enums";
 import { filterByColor } from "@/utils";

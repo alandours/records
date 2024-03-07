@@ -1,5 +1,5 @@
 import { ListRecord } from "@/components/ListRecord";
-import { Release } from "@/types";
+import type { Release } from "@/types";
 
 import { ListContainer } from "./styles";
 

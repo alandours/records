@@ -1,4 +1,4 @@
-import { ReleaseFormat } from "@/types";
+import type { ReleaseFormat } from "@/types";
 import { getRecordColor } from "@/utils";
 
 import {

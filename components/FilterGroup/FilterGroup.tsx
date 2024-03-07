@@ -1,5 +1,5 @@
 import { FilterOption } from "@/components/FilterOption";
-import { Option } from "@/types";
+import type { Option } from "@/types";
 
 import { FilterGroupTitle, FilterOptions } from "./styles";
 

@@ -1,5 +1,5 @@
 import { GridRecord } from "@/components/GridRecord";
-import { Release } from "@/types";
+import type { Release } from "@/types";
 
 import { GridContainer } from "./styles";
 

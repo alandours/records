@@ -1,6 +1,6 @@
 import { ReleaseLink } from "@/components/ReleaseLink";
 import { Color } from "@/constants/enums";
-import { Release } from "@/types";
+import type { Release } from "@/types";
 import {
   formatArtists,
   formatReleaseDescription,

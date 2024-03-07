@@ -2,7 +2,7 @@ import { RecordText } from "@/components/GridRecord/styles";
 import { RecordIcons } from "@/components/RecordIcons";
 import { ReleaseLink } from "@/components/ReleaseLink";
 import { ALL_MEDIA } from "@/constants";
-import { Release } from "@/types";
+import type { Release } from "@/types";
 import { formatArtists, formatReleaseDescription, isFormat } from "@/utils";
 
 import {

@@ -3,7 +3,7 @@
 import { Camelized, camelizeKeys } from "humps";
 
 import { AVAILABLE_FOLDERS } from "@/constants";
-import {
+import type {
   CollectionOptions,
   CollectionResponse,
   FoldersResponse,
