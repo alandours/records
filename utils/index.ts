@@ -6,7 +6,8 @@ import {
   COLORS,
   ALL_MEDIA,
 } from "@/constants";
-import { ReleaseArtist, ReleaseFormat } from "@/types";
+import { Color } from "@/constants/enums";
+import { Release, ReleaseArtist, ReleaseFormat } from "@/types";
 
 const removeArtistInstanceNumber = (artist: ReleaseArtist): string =>
   artist.name.replace(/\W\([0-9]+\)$/, "");
@@ -85,3 +86,22 @@ export const isFormat = (formatName: string, format: string) =>
 
 //   return allowedFormats;
 // };
+
+export const filterByColor = (releases: Release[], color: Color): Release[] => {
+  switch (color) {
+    case Color.color:
+      return releases.filter((release) =>
+        release.basicInformation.formats.some(
+          (format) => getRecordColor(format) !== Color.black
+        )
+      );
+    case Color.black:
+      return releases.filter((release) =>
+        release.basicInformation.formats.some(
+          (format) => getRecordColor(format) === Color.black
+        )
+      );
+    default:
+      return releases;
+  }
+};

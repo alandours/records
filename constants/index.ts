@@ -1,3 +1,5 @@
+import { Color } from "./enums";
+
 export const AVAILABLE_FOLDERS = [0, 6467602, 6467605];
 
 export const HIDDEN_FLAGS = [
@@ -68,4 +70,21 @@ export const INITIAL_FILTERS = {
   sort: "added",
   sortOrder: "desc",
   page: 1,
+};
+
+export const FILTER_OPTIONS = {
+  color: [
+    { id: Color.all, name: "All" },
+    { id: Color.black, name: "Black" },
+    { id: Color.color, name: "Color" },
+  ],
+  sort: [
+    { id: "added", name: "Date added" },
+    { id: "artist", name: "Artist" },
+    { id: "title", name: "Album" },
+  ],
+  sortOrder: [
+    { id: "desc", name: "↓", a11yLabel: "Descending" },
+    { id: "asc", name: "↑", a11yLabel: "Ascending" },
+  ],
 };

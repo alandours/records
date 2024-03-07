@@ -1,4 +1,5 @@
 import { ReleaseLink } from "@/components/ReleaseLink";
+import { Color } from "@/constants/enums";
 import { Release } from "@/types";
 import {
   formatArtists,
@@ -45,7 +46,7 @@ export const GridRecord = ({ release }: GridRecordProps) => {
           </RecordText>
         </Overlay>
 
-        {getRecordColor(formats[0]) !== "black" && (
+        {getRecordColor(formats[0]) !== Color.black && (
           <RecordColor color={getRecordColor(formats[0])} />
         )}
       </Container>
