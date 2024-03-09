@@ -19,7 +19,7 @@ export const FilterOption = ({
   minWidth,
   a11yLabel,
 }: FilterOptionProps) => (
-  <FilterLabel htmlFor={id} minWidth={minWidth} title={a11yLabel}>
+  <FilterLabel htmlFor={id} $minWidth={minWidth} title={a11yLabel}>
     {active && (
       <MotionSpan
         layoutId={name}
@@ -34,6 +34,6 @@ export const FilterOption = ({
       onChange={handleClick}
       aria-label={a11yLabel}
     />
-    <FilterText active={active}>{label}</FilterText>
+    <FilterText $active={active}>{label}</FilterText>
   </FilterLabel>
 );

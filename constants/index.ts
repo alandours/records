@@ -74,7 +74,7 @@ export const INITIAL_FILTERS = {
   page: 1,
 };
 
-export const INITIAL_FOLDERS = Array(3).fill({}) as Folder[];
+export const INITIAL_FOLDERS = [{ id: 0 }, { id: 1 }, { id: 2 }] as Folder[];
 
 export const FILTER_OPTIONS = {
   color: [

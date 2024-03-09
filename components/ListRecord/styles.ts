@@ -64,7 +64,7 @@ export const DescriptionContainer = styled.div`
 `;
 
 type DescriptionProps = {
-  fullRow: boolean;
+  $fullRow: boolean;
 };
 
 export const Description = styled.div<DescriptionProps>`
@@ -73,5 +73,5 @@ export const Description = styled.div<DescriptionProps>`
   gap: 0.25rem;
   overflow: hidden;
 
-  ${({ fullRow }) => fullRow && "flex-basis: 100%"};
+  ${({ $fullRow }) => $fullRow && "flex-basis: 100%"};
 `;

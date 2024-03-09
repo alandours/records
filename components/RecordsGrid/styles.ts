@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type GridContainerProps = {
-  isEmpty?: boolean;
+  $isEmpty?: boolean;
 };
 
 export const GridContainer = styled.div<GridContainerProps>`
@@ -15,7 +15,7 @@ export const GridContainer = styled.div<GridContainerProps>`
     gap: 0.5rem;
     margin: 0.5rem 1rem;
 
-    ${({ isEmpty }) => isEmpty && "margin: 0 1rem"};
+    ${({ $isEmpty }) => $isEmpty && "margin: 0 1rem"};
   }
 
   @media (min-width: 1024px) {

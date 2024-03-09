@@ -4,13 +4,13 @@ import styled from "styled-components";
 import { theme } from "@/constants/theme";
 
 type FilterLabelProps = {
-  minWidth?: string;
+  $minWidth?: string;
 };
 
 export const FilterLabel = styled.label<FilterLabelProps>`
   cursor: pointer;
   display: flex;
-  min-width: ${({ minWidth }) => minWidth || "6.25rem"};
+  min-width: ${({ $minWidth }) => $minWidth || "6.25rem"};
   position: relative;
   width: auto;
   -webkit-tap-highlight-color: transparent;
@@ -34,12 +34,12 @@ export const FilterCheckbox = styled.input`
 `;
 
 type FilterTextProps = {
-  active: boolean;
+  $active: boolean;
 };
 
 export const FilterText = styled.div<FilterTextProps>`
-  color: ${({ active }) =>
-    active ? theme.light.secondary.background : theme.light.secondary.color};
+  color: ${({ $active }) =>
+    $active ? theme.light.secondary.background : theme.light.secondary.color};
   font-size: 0.875rem;
   font-weight: 500;
   padding: 0.375rem 0.75rem;
@@ -53,7 +53,7 @@ export const FilterText = styled.div<FilterTextProps>`
   transition-duration: 600ms;
 
   @media (prefers-color-scheme: dark) {
-    color: ${({ active }) =>
-      active ? theme.dark.secondary.background : theme.dark.secondary.color};
+    color: ${({ $active }) =>
+      $active ? theme.dark.secondary.background : theme.dark.secondary.color};
   }
 `;

@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import type { ReleaseFormat } from "@/types";
 import { getRecordColor } from "@/utils";
 
@@ -28,6 +30,8 @@ const renderIcon = (format: ReleaseFormat) => {
 
 export const RecordIcons = ({ format }: RecordIconsProps) => (
   <IconsContainer>
-    {[...Array(Number(format.qty))].map((_, index) => renderIcon(format))}
+    {[...Array(Number(format.qty))].map((_, index) => (
+      <Fragment key={index}>{renderIcon(format)}</Fragment>
+    ))}
   </IconsContainer>
 );

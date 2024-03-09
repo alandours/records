@@ -80,4 +80,8 @@ export type CollectionOptions = {
   page: number;
 };
 
-export type SearchParamsType = Omit<CollectionOptions, "page"> & { view: View };
+export type SearchParamsType = {
+  sort: Sort;
+  sortOrder: SortOrder;
+  view: View;
+};

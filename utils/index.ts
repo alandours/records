@@ -6,7 +6,6 @@ import {
   COLORS,
   ALL_MEDIA,
   INITIAL_FILTERS,
-  AVAILABLE_FOLDERS,
 } from "@/constants";
 import { Color, Sort, SortOrder, View } from "@/constants/enums";
 import type {
@@ -115,12 +114,10 @@ export const filterByColor = (releases: Release[], color: Color): Release[] => {
 };
 
 export const getInitialFilters = ({
-  folder,
   sort,
   sortOrder,
 }: SearchParamsType): CollectionOptions => ({
   ...INITIAL_FILTERS,
-  folder: AVAILABLE_FOLDERS.includes(folder) ? folder : INITIAL_FILTERS.folder,
   sort: Object.values(Sort).includes(sort) ? sort : INITIAL_FILTERS.sort,
   sortOrder: Object.values(SortOrder).includes(sortOrder)
     ? sortOrder

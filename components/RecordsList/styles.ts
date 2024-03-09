@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type ListContainerProps = {
-  isEmpty?: boolean;
+  $isEmpty?: boolean;
 };
 
 export const ListContainer = styled.div<ListContainerProps>`
@@ -14,6 +14,6 @@ export const ListContainer = styled.div<ListContainerProps>`
     gap: 1rem;
     margin: 0.5rem 1rem;
 
-    ${({ isEmpty }) => isEmpty && "margin: 0 1rem"};
+    ${({ $isEmpty }) => $isEmpty && "margin: 0 1rem"};
   }
 `;

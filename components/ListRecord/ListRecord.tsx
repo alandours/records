@@ -41,7 +41,7 @@ export const ListRecord = ({ release }: ListRecordProps) => {
             {formats.map((format, index) => (
               <Description
                 key={index}
-                fullRow={isFormat(format.name, ALL_MEDIA)}
+                $fullRow={isFormat(format.name, ALL_MEDIA)}
               >
                 {formatReleaseDescription(format) && (
                   <RecordIcons format={format} />

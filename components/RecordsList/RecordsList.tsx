@@ -8,7 +8,7 @@ type RecordsListProps = {
 };
 
 export const RecordsList = ({ releases }: RecordsListProps) => (
-  <ListContainer isEmpty={!releases.length}>
+  <ListContainer $isEmpty={!releases.length}>
     {releases.map((release) => (
       <ListRecord release={release} key={release.instanceId} />
     ))}
