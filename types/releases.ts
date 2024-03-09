@@ -1,3 +1,5 @@
+import { Sort, SortOrder, View } from "@/constants/enums";
+
 type ReleaseNote = { fieldId: number; value: string };
 
 export type ReleaseFormat = {
@@ -73,7 +75,9 @@ export type CollectionResponse = {
 
 export type CollectionOptions = {
   folder: number;
-  sort: string;
-  sortOrder: string;
+  sort: Sort;
+  sortOrder: SortOrder;
   page: number;
 };
+
+export type SearchParamsType = Omit<CollectionOptions, "page"> & { view: View };

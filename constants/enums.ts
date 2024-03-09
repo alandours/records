@@ -8,3 +8,14 @@ export enum Color {
   color = "color",
   all = "all",
 }
+
+export enum Sort {
+  added = "added",
+  artist = "artist",
+  title = "title",
+}
+
+export enum SortOrder {
+  asc = "asc",
+  desc = "desc",
+}
