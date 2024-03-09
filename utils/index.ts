@@ -5,9 +5,17 @@ import {
   FLAGS_SEPARATOR,
   COLORS,
   ALL_MEDIA,
+  INITIAL_FILTERS,
+  AVAILABLE_FOLDERS,
 } from "@/constants";
-import { Color } from "@/constants/enums";
-import type { Release, ReleaseArtist, ReleaseFormat } from "@/types";
+import { Color, Sort, SortOrder, View } from "@/constants/enums";
+import type {
+  CollectionOptions,
+  Release,
+  ReleaseArtist,
+  ReleaseFormat,
+  SearchParamsType,
+} from "@/types";
 
 const removeArtistInstanceNumber = (artist: ReleaseArtist): string =>
   artist.name.replace(/\W\([0-9]+\)$/, "");
@@ -105,3 +113,19 @@ export const filterByColor = (releases: Release[], color: Color): Release[] => {
       return releases;
   }
 };
+
+export const getInitialFilters = ({
+  folder,
+  sort,
+  sortOrder,
+}: SearchParamsType): CollectionOptions => ({
+  ...INITIAL_FILTERS,
+  folder: AVAILABLE_FOLDERS.includes(folder) ? folder : INITIAL_FILTERS.folder,
+  sort: Object.values(Sort).includes(sort) ? sort : INITIAL_FILTERS.sort,
+  sortOrder: Object.values(SortOrder).includes(sortOrder)
+    ? sortOrder
+    : INITIAL_FILTERS.sortOrder,
+});
+
+export const getInitialView = ({ view }: SearchParamsType): View =>
+  view && Object.values(View).includes(view) ? view : View.grid;

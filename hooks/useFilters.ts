@@ -1,20 +1,30 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-import { FILTER_OPTIONS, INITIAL_FILTERS, INITIAL_FOLDERS } from "@/constants";
-import type { CollectionOptions, Folder, Option, Release } from "@/types";
+import { FILTER_OPTIONS, INITIAL_FOLDERS } from "@/constants";
+import type {
+  CollectionOptions,
+  Folder,
+  Option,
+  Release,
+  SearchParamsType,
+} from "@/types";
 import { getCollections, getFolders } from "@/app/actions";
-import { Color, View } from "@/constants/enums";
-import { filterByColor } from "@/utils";
+import { Color, Sort, SortOrder, View } from "@/constants/enums";
+import { filterByColor, getInitialFilters, getInitialView } from "@/utils";
+import { usePathname, useRouter } from "next/navigation";
 
-export const useFilters = () => {
+export const useFilters = (searchParams: SearchParamsType) => {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [releases, setReleases] = useState<Release[]>([]);
   const [availableFolders, setAvailableFolders] =
     useState<Folder[]>(INITIAL_FOLDERS);
-  const [filters, setFilters] = useState(INITIAL_FILTERS);
+  const [filters, setFilters] = useState(getInitialFilters(searchParams));
   const [colorFilter, setColorFilter] = useState<Color>(Color.all);
   const [pages, setPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
-  const [view, setView] = useState<View>(View.list);
+  const [view, setView] = useState<View>(getInitialView(searchParams));
 
   const filtersOptions = [
     {
@@ -41,7 +51,7 @@ export const useFilters = () => {
       title: "Sort",
       data: FILTER_OPTIONS.sort,
       activeOption: filters.sort,
-      handleClick: (option: Option<string>) => {
+      handleClick: (option: Option<Sort>) => {
         setReleases([]);
         setFilters((prev) => ({ ...prev, sort: option.id }));
       },
@@ -50,7 +60,7 @@ export const useFilters = () => {
       title: "",
       data: FILTER_OPTIONS.sortOrder,
       activeOption: filters.sortOrder,
-      handleClick: (option: Option<string>) => {
+      handleClick: (option: Option<SortOrder>) => {
         setReleases([]);
         setFilters((prev) => ({ ...prev, sortOrder: option.id }));
       },
@@ -91,6 +101,21 @@ export const useFilters = () => {
     setPages(collection.pagination.pages);
   };
 
+  const addFiltersToUrl = useCallback(
+    (view: View, filters: CollectionOptions) => {
+      const filtersKeyValue = Object.entries(filters).filter(
+        ([key]) => key !== "page" && key !== "folder"
+      );
+
+      const filtersQuery = [["view", view], ...filtersKeyValue]
+        .map((keyValue) => keyValue.join("="))
+        .join("&");
+
+      router.replace(`${pathname}?${filtersQuery}`);
+    },
+    [pathname, router]
+  );
+
   useEffect(() => {
     fetchFoldersRequest();
   }, []);
@@ -102,6 +127,10 @@ export const useFilters = () => {
   }, [filters, currentPage]);
 
   useEffect(() => setCurrentPage(1), [filters]);
+
+  useEffect(() => {
+    addFiltersToUrl(view, filters);
+  }, [view, filters, addFiltersToUrl]);
 
   return {
     releases: filterByColor(releases, colorFilter),

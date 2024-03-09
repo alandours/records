@@ -1,6 +1,6 @@
 import type { Folder } from "@/types";
 
-import { Color } from "./enums";
+import { Color, Sort, SortOrder } from "./enums";
 
 export const AVAILABLE_FOLDERS = [0, 6467602, 6467605];
 
@@ -69,8 +69,8 @@ export const COLORS: ColorsMap = {
 
 export const INITIAL_FILTERS = {
   folder: 0,
-  sort: "added",
-  sortOrder: "desc",
+  sort: Sort.added,
+  sortOrder: SortOrder.desc,
   page: 1,
 };
 
@@ -83,12 +83,12 @@ export const FILTER_OPTIONS = {
     { id: Color.color, name: "Color" },
   ],
   sort: [
-    { id: "added", name: "Date added" },
-    { id: "artist", name: "Artist" },
-    { id: "title", name: "Album" },
+    { id: Sort.added, name: "Date added" },
+    { id: Sort.artist, name: "Artist" },
+    { id: Sort.title, name: "Album" },
   ],
   sortOrder: [
-    { id: "desc", name: "↓", a11yLabel: "Descending" },
-    { id: "asc", name: "↑", a11yLabel: "Ascending" },
+    { id: SortOrder.desc, name: "↓", a11yLabel: "Descending" },
+    { id: SortOrder.asc, name: "↑", a11yLabel: "Ascending" },
   ],
 };
