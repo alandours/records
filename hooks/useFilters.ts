@@ -14,7 +14,7 @@ export const useFilters = () => {
   const [colorFilter, setColorFilter] = useState<Color>(Color.all);
   const [pages, setPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
-  const [view, setView] = useState<View>(View.grid);
+  const [view, setView] = useState<View>(View.list);
 
   const filtersOptions = [
     {

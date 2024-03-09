@@ -6,6 +6,7 @@ import { FilterGroup } from "@/components/FilterGroup";
 import { RecordsGrid } from "@/components/RecordsGrid";
 import { RecordsGridLoader } from "@/components/RecordsGridLoader";
 import { RecordsList } from "@/components/RecordsList";
+import { RecordsListLoader } from "@/components/RecordsListLoader";
 import { View } from "@/constants/enums";
 import { useFilters } from "@/hooks/useFilters";
 
@@ -24,6 +25,7 @@ export const RecordsContainer = () => {
   } = useFilters();
 
   const RecordsView = view === View.grid ? RecordsGrid : RecordsList;
+  const Loader = view === View.grid ? RecordsGridLoader : RecordsListLoader;
 
   return (
     <Main>
@@ -49,13 +51,9 @@ export const RecordsContainer = () => {
           dataLength={dataLength}
           next={loadMore}
           hasMore={hasMore}
-          loader={<RecordsGridLoader />}
+          loader={<Loader />}
           endMessage={
-            !!dataLength ? (
-              <p className="text-center">End</p>
-            ) : (
-              <RecordsGridLoader />
-            )
+            !!dataLength ? <p className="text-center">The End</p> : <Loader />
           }
           scrollThreshold={0.9}
         >
