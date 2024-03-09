@@ -8,10 +8,11 @@ export const FilterGroupTitle = styled.div`
 `;
 
 export const FilterOptions = styled.div`
-  display: flex;
   background: ${theme.light.secondary.background};
-  padding: 0.375rem;
   border-radius: 0.375rem;
+  display: flex;
+  min-height: 2.8rem;
+  padding: 0.375rem;
   width: fit-content;
 
   @media (prefers-color-scheme: dark) {

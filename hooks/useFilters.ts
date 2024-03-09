@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { FILTER_OPTIONS, INITIAL_FILTERS } from "@/constants";
+import { FILTER_OPTIONS, INITIAL_FILTERS, INITIAL_FOLDERS } from "@/constants";
 import type { CollectionOptions, Folder, Option, Release } from "@/types";
 import { getCollections, getFolders } from "@/app/actions";
 import { Color, View } from "@/constants/enums";
@@ -8,7 +8,8 @@ import { filterByColor } from "@/utils";
 
 export const useFilters = () => {
   const [releases, setReleases] = useState<Release[]>([]);
-  const [availableFolders, setAvailableFolders] = useState<Folder[]>([]);
+  const [availableFolders, setAvailableFolders] =
+    useState<Folder[]>(INITIAL_FOLDERS);
   const [filters, setFilters] = useState(INITIAL_FILTERS);
   const [colorFilter, setColorFilter] = useState<Color>(Color.all);
   const [pages, setPages] = useState(0);

@@ -6,7 +6,7 @@ type GridContainerProps = {
 
 export const GridContainer = styled.div<GridContainerProps>`
   display: grid;
-  gap: 0;
+  gap: 0.125rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0;
 

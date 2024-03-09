@@ -1,3 +1,5 @@
+import type { Folder } from "@/types";
+
 import { Color } from "./enums";
 
 export const AVAILABLE_FOLDERS = [0, 6467602, 6467605];
@@ -71,6 +73,8 @@ export const INITIAL_FILTERS = {
   sortOrder: "desc",
   page: 1,
 };
+
+export const INITIAL_FOLDERS = Array(3).fill({}) as Folder[];
 
 export const FILTER_OPTIONS = {
   color: [
