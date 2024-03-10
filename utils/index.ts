@@ -6,6 +6,7 @@ import {
   COLORS,
   ALL_MEDIA,
   INITIAL_FILTERS,
+  EXCLUDE_COLORS,
 } from "@/constants";
 import { Color, Sort, SortOrder, View } from "@/constants/enums";
 import type {
@@ -68,8 +69,12 @@ export const formatReleaseDescription = (format: ReleaseFormat): string => {
 };
 
 const getColorKey = (text: string): string | undefined =>
-  Object.keys(COLORS).find((color) =>
-    normalize(text).includes(normalize(color))
+  Object.keys(COLORS).find(
+    (color) =>
+      normalize(text).includes(normalize(color)) &&
+      !EXCLUDE_COLORS.some((color) =>
+        normalize(text).includes(normalize(color))
+      )
   );
 
 export const getRecordColor = (format: ReleaseFormat): string => {
