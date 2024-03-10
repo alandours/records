@@ -49,7 +49,7 @@ export const FilterText = styled.div<FilterTextProps>`
   font-size: 0.95rem;
   font-weight: 400;
   justify-content: center;
-  padding: 0.375rem 0.75rem;
+  padding: 0.375rem 0.75rem 0.275rem 0.75rem;
   position: relative;
   text-align: center;
   width: 100%;
