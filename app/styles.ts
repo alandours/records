@@ -2,11 +2,7 @@ import { theme } from "@/constants/theme";
 import styled from "styled-components";
 
 export const Header = styled.header`
-  margin: 0.5rem;
-
-  @media (min-width: 640px) {
-    margin: 3rem 1rem;
-  }
+  margin: 3rem 1rem;
 `;
 
 export const Main = styled.main`
@@ -18,8 +14,8 @@ export const Main = styled.main`
   padding-bottom: 3rem;
 
   @media (prefers-color-scheme: dark) {
-    color: ${theme.dark.main.color};
     background: ${theme.dark.main.background};
+    color: ${theme.dark.main.color};
   }
 `;
 

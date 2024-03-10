@@ -3,6 +3,10 @@ const common = {
     background: "#000000",
     color: "#ffffff",
   },
+  white: {
+    background: "#ffffff",
+    color: "#000000",
+  },
 };
 
 const light = {

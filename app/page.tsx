@@ -8,6 +8,7 @@ import { RecordsGrid } from "@/components/RecordsGrid";
 import { RecordsGridLoader } from "@/components/RecordsGridLoader";
 import { RecordsList } from "@/components/RecordsList";
 import { RecordsListLoader } from "@/components/RecordsListLoader";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { View } from "@/constants/enums";
 import { useFilters } from "@/hooks/useFilters";
 
@@ -64,6 +65,7 @@ export default function Home({ searchParams }: HomeProps) {
           <RecordsView releases={releases} />
         </InfiniteScroll>
       </Container>
+      <ScrollToTop />
     </Main>
   );
 }
