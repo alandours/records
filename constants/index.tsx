@@ -22,6 +22,7 @@ export const HIDDEN_FLAGS = [
 export const HIDDEN_FREE_TEXT = [
   "(r) on label",
   "140",
+  "17203",
   "180",
   "address",
   "cut",
