@@ -1,3 +1,6 @@
+import { Icon } from "@/components/Icon";
+import { Icons } from "@/constants";
+
 import { ScrollTopButton } from "./styles";
 
 export const ScrollToTop = () => {
@@ -14,7 +17,7 @@ export const ScrollToTop = () => {
       title="Scroll to top"
       aria-label="Scroll to top"
     >
-      ↑
+      <Icon name={Icons.chevronUp} />
     </ScrollTopButton>
   );
 };

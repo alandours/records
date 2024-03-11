@@ -6,6 +6,7 @@ import { GoArrowUp } from "@react-icons/all-files/go/GoArrowUp";
 import { GoArrowDown } from "@react-icons/all-files/go/GoArrowDown";
 import { FiBox } from "@react-icons/all-files/fi/FiBox";
 import { GiCompactDisc } from "@react-icons/all-files/gi/GiCompactDisc";
+import { IoChevronUpOutline } from "@react-icons/all-files/io5/IoChevronUpOutline";
 
 export enum Icons {
   instagram,
@@ -16,6 +17,7 @@ export enum Icons {
   desc,
   boxset,
   cd,
+  chevronUp,
 }
 
 export const icons = {
@@ -27,4 +29,5 @@ export const icons = {
   [Icons.desc]: GoArrowDown,
   [Icons.boxset]: FiBox,
   [Icons.cd]: GiCompactDisc,
+  [Icons.chevronUp]: IoChevronUpOutline,
 };

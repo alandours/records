@@ -3,11 +3,14 @@ import styled from "styled-components";
 import { theme } from "@/constants/theme";
 
 export const ScrollTopButton = styled.button`
+  align-items: center;
   background: ${theme.common.white.background};
   border-radius: 100%;
   bottom: 1rem;
   box-shadow: 0px 0px 30px 0 rgb(100 100 100 / 0.2);
   color: ${theme.common.white.color};
+  display: flex;
+  justify-content: center;
   height: 3.5rem;
   width: 3.5rem;
   position: fixed;
