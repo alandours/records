@@ -8,7 +8,7 @@ export const ListPlaceholder = styled.div`
   border-bottom-right-radius: 0.375rem;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   width: 100%;
-  height: 150px;
+  height: 30rem;
 
   @media (prefers-color-scheme: dark) {
     background: ${theme.dark.secondary.background};
@@ -18,5 +18,6 @@ export const ListPlaceholder = styled.div`
   @media (min-width: 400px) {
     border-bottom-left-radius: 0;
     border-top-right-radius: 0.375rem;
+    height: 9.375rem;
   }
 `;

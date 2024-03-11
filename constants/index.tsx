@@ -30,7 +30,9 @@ export const HIDDEN_FREE_TEXT = [
   "gz media",
   "heavyweight",
   "includes poster",
+  "matte sleeve",
   "pressing",
+  "translucent text",
   "rpm",
 ];
 
@@ -45,11 +47,11 @@ export const COLORS: ColorsMap = {
   "Black / White Marbled": "#3C3C3C",
   "Blue / White Marbled": "#0C29C1",
   "Blue [Deep Sea]": "#0900B4",
-  "Blue [Light Blue] Transparent": "#3EF0F4",
+  "Blue [Light Blue] Translucent": "#3EF0F4",
   "Blood Moon Marbled": "#F18E00",
   "Clear W/ Yellow Splatter": "#F8F1B4",
   "Clear With Light Blue Hi-Melt": "#007FED",
-  "Clear With Red & Yellow Swirl": "#F8F1B4",
+  "Clear With Red & Yellow Swirl": "#E3BD2D",
   "Coke Bottle": "#B1F3D1",
   "Dark Pink": "#F32B1B",
   "Dark Yellow": "#E5AC03",
