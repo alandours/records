@@ -27,8 +27,8 @@ export enum SortOrder {
 
 export const INITIAL_FILTERS = {
   folder: 0,
-  sort: Sort.added,
-  sortOrder: SortOrder.desc,
+  sort: Sort.artist,
+  sortOrder: SortOrder.asc,
   page: 1,
 };
 
