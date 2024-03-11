@@ -77,6 +77,7 @@ export const COLORS: ColorsMap = {
   pink: "#FF70AF",
   purple: "#9E02EC",
   red: "#F32B1B",
+  translucent: "#F0EFE9",
   violet: "#BB2287",
   white: "#FFFFFF",
   yellow: "#F5DF00",
