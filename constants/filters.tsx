@@ -40,9 +40,9 @@ export const FILTER_OPTIONS = {
     { id: Color.color, name: "Color" },
   ],
   sort: [
-    { id: Sort.added, name: "Date added" },
     { id: Sort.artist, name: "Artist" },
     { id: Sort.title, name: "Album" },
+    { id: Sort.added, name: "Date added" },
   ],
   sortOrder: [
     {
