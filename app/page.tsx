@@ -61,7 +61,7 @@ export default function Home({ searchParams }: HomeProps) {
           hasMore={hasMore}
           loader={<Loader />}
           endMessage={!!dataLength ? <EndVideo /> : <Loader />}
-          scrollThreshold={0.9}
+          scrollThreshold={0.75}
         >
           <RecordsView releases={releases} />
         </InfiniteScroll>
