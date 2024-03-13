@@ -1,4 +1,3 @@
-import NextImage from "next/image";
 import styled from "styled-components";
 
 import { theme } from "@/constants/theme";
@@ -25,7 +24,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Image = styled(NextImage)`
+export const Image = styled.img`
   aspect-ratio: 1 / 1;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   object-fit: cover;

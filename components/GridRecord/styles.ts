@@ -1,10 +1,9 @@
-import NextImage from "next/image";
 import styled from "styled-components";
 
 import { RecordIcons } from "@/components/RecordIcons";
 import { theme } from "@/constants/theme";
 
-export const Image = styled(NextImage)`
+export const Image = styled.img`
   aspect-ratio: 1 / 1;
   object-fit: cover;
 `;
