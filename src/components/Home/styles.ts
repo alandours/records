@@ -11,7 +11,11 @@ export const Header = styled.header`
 
 export const Main = styled.main`
   align-items: center;
-  background: ${theme.light.main.background};
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 95%,
+    rgba(244, 249, 255, 1) 100%
+  );
   color: ${theme.light.main.color};
   display: flex;
   flex-direction: column;
