@@ -1,5 +1,6 @@
 import { RecordText } from "@/components/GridRecord/styles";
 import { RecordIcons } from "@/components/RecordIcons";
+import { RecordImage } from "@/components/RecordImage";
 import { ReleaseLink } from "@/components/ReleaseLink";
 import { ALL_MEDIA } from "@/constants";
 import type { Release } from "@/types";
@@ -10,7 +11,6 @@ import {
   Content,
   Description,
   DescriptionContainer,
-  Image,
   RecordTitle,
 } from "./styles";
 
@@ -20,17 +20,18 @@ type ListRecordProps = {
 
 export const ListRecord = ({ release }: ListRecordProps) => {
   const {
-    basicInformation: { id, title, coverImage, artists, formats },
+    basicInformation: { id, title, coverImage, thumb, artists, formats },
   } = release;
 
   return (
     <ReleaseLink id={id}>
       <Container>
-        <Image
-          src={coverImage}
-          alt={`${title} album cover`}
-          width={400}
-          height={400}
+        <RecordImage
+          title={title}
+          image={coverImage}
+          fallbackImage={thumb}
+          size={400}
+          list
         />
         <Content>
           <div>

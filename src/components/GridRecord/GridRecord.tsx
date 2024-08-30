@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import { RecordImage } from "@/components/RecordImage";
 import { ReleaseLink } from "@/components/ReleaseLink";
 import { ALL_MEDIA } from "@/constants";
 import type { Release } from "@/types";
@@ -7,7 +8,6 @@ import { formatArtists, formatReleaseDescription, isFormat } from "@/utils";
 
 import {
   Container,
-  Image,
   Overlay,
   RecordIconsContainer,
   RecordText,
@@ -43,13 +43,11 @@ export const GridRecord = ({ release }: GridRecordProps) => {
   return (
     <ReleaseLink id={id}>
       <Container>
-        <Image
-          src={imageError ? thumb : coverImage}
-          alt={`${title} album cover`}
-          width={500}
-          height={500}
-          onError={() => setImageError(true)}
-          $blur={imageError}
+        <RecordImage
+          title={title}
+          image={coverImage}
+          fallbackImage={thumb}
+          size={500}
         />
         <Overlay>
           <div>

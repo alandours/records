@@ -24,17 +24,6 @@ export const Container = styled.div`
   }
 `;
 
-export const Image = styled.img`
-  aspect-ratio: 1 / 1;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  object-fit: cover;
-  max-width: 100%;
-
-  @media (min-width: 400px) {
-    max-width: 150px;
-  }
-`;
-
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
