@@ -11,7 +11,7 @@ import type {
 
 const BASE_URL = "https://api.discogs.com";
 
-const RESULTS_PER_PAGE = 100;
+const RESULTS_PER_PAGE = 20;
 
 const PATHS = {
   folders: () => `/users/${process.env.DISCOGS_USERNAME}/collection/folders`,
