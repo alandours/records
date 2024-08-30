@@ -1,5 +1,7 @@
 import { Sort, SortOrder, View } from "@/constants";
 
+import { Folder } from "./folders";
+
 type ReleaseNote = { fieldId: number; value: string };
 
 export type ReleaseFormat = {
@@ -88,6 +90,7 @@ export type SearchParamsType = {
 
 export type InitialData = {
   releases: Release[];
+  folders: Folder[];
   filters: CollectionOptions;
   view: View;
   currentPage: number;

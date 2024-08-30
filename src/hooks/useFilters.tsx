@@ -22,14 +22,13 @@ export const useFilters = (initialData: InitialData) => {
   const [view, setView] = useState<View>(initialData.view);
   const [currentPage, setCurrentPage] = useState(initialData.currentPage);
   const [pages, setPages] = useState(initialData.pages);
-  const [folders, setFolders] = useState<Folder[]>(INITIAL_FOLDERS);
   const [colorFilter, setColorFilter] = useState<Color>(Color.all);
 
   const filtersOptions = [
     {
       name: "format",
       title: "Format",
-      data: folders,
+      data: initialData.folders,
       activeOption: filters.folder,
       handleClick: (option: Option<number>) => {
         setReleases([]);
@@ -97,11 +96,6 @@ export const useFilters = (initialData: InitialData) => {
 
   const loadMore = () => setCurrentPage((prev) => prev + 1);
 
-  const fetchFoldersRequest = async () => {
-    const folders: Folder[] = await getFolders();
-    setFolders(folders);
-  };
-
   const fetchCollectionRequest = async (
     params: CollectionOptions,
     currentPage: number
@@ -128,10 +122,6 @@ export const useFilters = (initialData: InitialData) => {
     },
     [pathname, router]
   );
-
-  useEffect(() => {
-    fetchFoldersRequest();
-  }, []);
 
   useEffect(() => {
     if (currentPage > 1) {
