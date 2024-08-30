@@ -12,9 +12,10 @@ type ReleaseLinkProps = {
 
 export const ReleaseLink = ({ id, span = 1, children }: ReleaseLinkProps) => (
   <Link
-    href={getReleaseUrl(id)}
-    target="_blank"
-    rel="noopener noreferrer"
+    // href={getReleaseUrl(id)}
+    href={`/record/${id}`}
+    // target="_blank"
+    // rel="noopener noreferrer"
     span={span}
   >
     {children}

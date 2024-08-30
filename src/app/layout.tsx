@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { ReactNode, Suspense } from "react";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
@@ -24,17 +24,19 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+interface RootLayoutProps {
+  modal: ReactNode;
+  children: ReactNode;
+}
+
+export default function RootLayout({ modal, children }: RootLayoutProps) {
   return (
     <html lang="en">
       <Suspense>
         <GoogleTagManager />
       </Suspense>
       <body className={inter.className}>
+        {modal}
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         <noscript>
           <iframe

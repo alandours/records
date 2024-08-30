@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import NextLink from "next/link";
 
 type LinkProps = {
   span?: number;
 };
 
-export const Link = styled.a<LinkProps>`
+export const Link = styled(NextLink)<LinkProps>`
   display: flex;
   width: 100%;
 

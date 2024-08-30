@@ -4,9 +4,9 @@ import { getInitialFilters, getInitialView } from "@/utils";
 
 import { getCollections, getFolders } from "./actions";
 
-type HomePageProps = {
+interface HomePageProps {
   searchParams: SearchParamsType;
-};
+}
 
 export default async function HomePage({ searchParams }: HomePageProps) {
   const searchParamsData = {

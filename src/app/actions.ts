@@ -7,6 +7,7 @@ import type {
   CollectionOptions,
   CollectionResponse,
   FoldersResponse,
+  ReleaseResponse,
 } from "@/types";
 
 const BASE_URL = "https://api.discogs.com";
@@ -17,6 +18,7 @@ const PATHS = {
   folders: () => `/users/${process.env.DISCOGS_USERNAME}/collection/folders`,
   collection: ({ folder, sort, sortOrder, page }: CollectionOptions) =>
     `/users/${process.env.DISCOGS_USERNAME}/collection/folders/${folder}/releases?sort=${sort}&sort_order=${sortOrder}&page=${page}&per_page=${RESULTS_PER_PAGE}`,
+  release: (id: string) => `/releases/${id}`,
 };
 
 const HEADERS = {
@@ -54,3 +56,6 @@ export const getCollections = async (params: CollectionOptions) => {
 
   return { pagination, releases: filteredReleases };
 };
+
+export const getRelease = async (id: string) =>
+  await client<ReleaseResponse>(PATHS.release(id));

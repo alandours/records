@@ -54,6 +54,65 @@ type ReleaseFull = {
   notes: ReleaseNote[];
 };
 
+export type ReleaseResponse = {
+  id: number;
+  title: string;
+  thumb: string;
+  artists: [
+    {
+      anv: string;
+      id: number;
+      join: string;
+      name: string;
+      resource_url: string;
+      role: string;
+      tracks: string;
+    }
+  ];
+  country: string;
+  extraartists: {
+    anv: string;
+    id: number;
+    join: string;
+    name: string;
+    resource_url: string;
+    role: string;
+    tracks: string;
+  }[];
+  formats: ReleaseFormat[];
+  genres: string[];
+  images: {
+    height: number;
+    resource_url: string;
+    type: string;
+    uri: string;
+    uri150: string;
+    width: number;
+  }[];
+  labels: ReleaseLabel[];
+  notes: string;
+  released: string;
+  released_formatted: string;
+  series: string[];
+  styles: string[];
+  tracklist: {
+    duration: string;
+    position: string;
+    title: string;
+    type_: string;
+  }[];
+  uri: string;
+  videos: {
+    description: string;
+    duration: number;
+    embed: boolean;
+    title: string;
+    uri: string;
+  }[];
+
+  year: number;
+};
+
 export type Release = Pick<
   ReleaseFull,
   "instanceId" | "dateAdded" | "basicInformation" | "folderId"
