@@ -9,6 +9,7 @@ type RecordIconProps = {
 export const IconsContainer = styled.div`
   display: flex;
   margin-right: 0.25rem;
+  margin-top: -0.125rem;
 
   @media (prefers-color-scheme: dark) {
     & svg {
