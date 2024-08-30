@@ -85,3 +85,11 @@ export type SearchParamsType = {
   sortOrder: SortOrder;
   view: View;
 };
+
+export type InitialData = {
+  releases: Release[];
+  filters: CollectionOptions;
+  view: View;
+  currentPage: number;
+  pages: number;
+};

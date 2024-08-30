@@ -7,30 +7,29 @@ import { Color, Icons, Sort, SortOrder, View } from "@/constants";
 import type {
   CollectionOptions,
   Folder,
+  InitialData,
   Option,
   Release,
-  SearchParamsType,
 } from "@/types";
-import { filterByColor, getInitialFilters, getInitialView } from "@/utils";
+import { filterByColor } from "@/utils";
 
-export const useFilters = (searchParams: SearchParamsType) => {
+export const useFilters = (initialData: InitialData) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [releases, setReleases] = useState<Release[]>([]);
-  const [availableFolders, setAvailableFolders] =
-    useState<Folder[]>(INITIAL_FOLDERS);
-  const [filters, setFilters] = useState(getInitialFilters(searchParams));
+  const [releases, setReleases] = useState<Release[]>(initialData.releases);
+  const [filters, setFilters] = useState(initialData.filters);
+  const [view, setView] = useState<View>(initialData.view);
+  const [currentPage, setCurrentPage] = useState(initialData.currentPage);
+  const [pages, setPages] = useState(initialData.pages);
+  const [folders, setFolders] = useState<Folder[]>(INITIAL_FOLDERS);
   const [colorFilter, setColorFilter] = useState<Color>(Color.all);
-  const [pages, setPages] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [view, setView] = useState<View>(getInitialView(searchParams));
 
   const filtersOptions = [
     {
       name: "format",
       title: "Format",
-      data: availableFolders,
+      data: folders,
       activeOption: filters.folder,
       handleClick: (option: Option<number>) => {
         setReleases([]);
@@ -100,7 +99,7 @@ export const useFilters = (searchParams: SearchParamsType) => {
 
   const fetchFoldersRequest = async () => {
     const folders: Folder[] = await getFolders();
-    setAvailableFolders(folders);
+    setFolders(folders);
   };
 
   const fetchCollectionRequest = async (
@@ -135,7 +134,7 @@ export const useFilters = (searchParams: SearchParamsType) => {
   }, []);
 
   useEffect(() => {
-    if (currentPage !== 0) {
+    if (currentPage > 1) {
       fetchCollectionRequest(filters, currentPage);
     }
   }, [filters, currentPage]);
