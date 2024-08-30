@@ -14,7 +14,7 @@ const BASE_URL = "https://api.discogs.com";
 const RESULTS_PER_PAGE = 100;
 
 const PATHS = {
-  folders: `/users/${process.env.DISCOGS_USERNAME}/collection/folders`,
+  folders: () => `/users/${process.env.DISCOGS_USERNAME}/collection/folders`,
   collection: ({ folder, sort, sortOrder, page }: CollectionOptions) =>
     `/users/${process.env.DISCOGS_USERNAME}/collection/folders/${folder}/releases?sort=${sort}&sort_order=${sortOrder}&page=${page}&per_page=${RESULTS_PER_PAGE}`,
 };
@@ -24,8 +24,8 @@ const HEADERS = {
   Authorization: `Discogs token=${process.env.DISCOGS_TOKEN}`,
 };
 
-const client = async <T>(endpoint: string): Promise<Camelized<T>> => {
-  const response = await fetch(`${BASE_URL}${endpoint}`, {
+const client = async <T>(path: string): Promise<Camelized<T>> => {
+  const response = await fetch(`${BASE_URL}${path}`, {
     headers: HEADERS,
   });
 
@@ -33,7 +33,7 @@ const client = async <T>(endpoint: string): Promise<Camelized<T>> => {
 };
 
 export const getFolders = async () => {
-  const { folders } = await client<FoldersResponse>(PATHS.folders);
+  const { folders } = await client<FoldersResponse>(PATHS.folders());
 
   return folders.filter((folder) => AVAILABLE_FOLDERS.includes(folder.id));
 };

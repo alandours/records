@@ -4,7 +4,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { getCollections, getFolders } from "@/app/actions";
 import { FILTER_OPTIONS, INITIAL_FOLDERS } from "@/constants";
 import { Color, Icons, Sort, SortOrder, View } from "@/constants";
-import { Icon } from "@/components/Icon";
 import type {
   CollectionOptions,
   Folder,

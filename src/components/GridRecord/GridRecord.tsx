@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { ReleaseLink } from "@/components/ReleaseLink";
 import { ALL_MEDIA } from "@/constants";
 import type { Release } from "@/types";
@@ -19,17 +21,21 @@ type GridRecordProps = {
 
 export const GridRecord = ({ release }: GridRecordProps) => {
   const {
-    basicInformation: { id, title, coverImage, artists, formats },
+    basicInformation: { id, title, coverImage, thumb, artists, formats },
   } = release;
+
+  const [image, setImage] = useState(coverImage);
 
   return (
     <ReleaseLink id={id}>
       <Container>
         <Image
-          src={coverImage}
+          src={image}
           alt={`${title} album cover`}
           width={500}
           height={500}
+          onError={() => setImage(thumb)}
+          $blur={image === thumb}
         />
         <Overlay>
           <div>

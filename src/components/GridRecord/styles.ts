@@ -1,11 +1,14 @@
 import styled from "styled-components";
+import NextImage from "next/image";
 
 import { RecordIcons } from "@/components/RecordIcons";
 import { theme } from "@/constants/theme";
 
-export const Image = styled.img`
+export const Image = styled(NextImage)<{ $blur: boolean }>`
   aspect-ratio: 1 / 1;
   object-fit: cover;
+
+  ${({ $blur }) => $blur && `filter: blur(6px)`};
 `;
 
 export const Overlay = styled.div`
@@ -61,6 +64,8 @@ export const Container = styled.div`
   max-height: auto;
   max-width: 100%;
   position: relative;
+
+  overflow: hidden;
 
   @media (prefers-color-scheme: dark) {
     background: ${theme.dark.secondary.background};
