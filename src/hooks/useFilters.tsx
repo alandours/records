@@ -124,10 +124,10 @@ export const useFilters = (initialData: InitialData) => {
   );
 
   useEffect(() => {
-    if (currentPage > 1) {
+    if (!releases.length) {
       fetchCollectionRequest(filters, currentPage);
     }
-  }, [filters, currentPage]);
+  }, [releases, filters, currentPage]);
 
   useEffect(() => setCurrentPage(1), [filters]);
 
