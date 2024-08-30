@@ -15,7 +15,7 @@ const light = {
     color: "#080808",
   },
   secondary: {
-    background: "#e5e5e5",
+    background: "#e5e5ea",
     color: "#262626",
   },
 };
