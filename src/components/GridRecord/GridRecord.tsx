@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ReleaseLink } from "@/components/ReleaseLink";
 import { ALL_MEDIA } from "@/constants";
@@ -24,18 +24,32 @@ export const GridRecord = ({ release }: GridRecordProps) => {
     basicInformation: { id, title, coverImage, thumb, artists, formats },
   } = release;
 
-  const [image, setImage] = useState(coverImage);
+  const [imageError, setImageError] = useState(false);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    if (imageError) {
+      timeout = setTimeout(() => {
+        setImageError(false);
+      }, 1000 * 60 * 60);
+    }
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [imageError]);
 
   return (
     <ReleaseLink id={id}>
       <Container>
         <Image
-          src={image}
+          src={imageError ? thumb : coverImage}
           alt={`${title} album cover`}
           width={500}
           height={500}
-          onError={() => setImage(thumb)}
-          $blur={image === thumb}
+          onError={() => setImageError(true)}
+          $blur={imageError}
         />
         <Overlay>
           <div>
