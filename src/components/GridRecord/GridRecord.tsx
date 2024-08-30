@@ -32,7 +32,7 @@ export const GridRecord = ({ release }: GridRecordProps) => {
     if (imageError) {
       timeout = setTimeout(() => {
         setImageError(false);
-      }, 1000 * 60 * 60);
+      }, 1000 * 60);
     }
 
     return () => {
