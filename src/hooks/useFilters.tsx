@@ -104,7 +104,12 @@ export const useFilters = (initialData: InitialData) => {
       ...params,
       page: currentPage,
     });
-    setReleases((prev) => [...prev, ...collection.releases]);
+
+    setReleases((prev) =>
+      currentPage === 1
+        ? collection.releases
+        : [...prev, ...collection.releases]
+    );
     setPages(collection.pagination.pages);
   };
 
@@ -124,7 +129,13 @@ export const useFilters = (initialData: InitialData) => {
   );
 
   useEffect(() => {
-    if (!releases.length) {
+    if (currentPage > 1) {
+      fetchCollectionRequest(filters, currentPage);
+    }
+  }, [filters, currentPage]);
+
+  useEffect(() => {
+    if (currentPage === 1 && !releases.length) {
       fetchCollectionRequest(filters, currentPage);
     }
   }, [releases, filters, currentPage]);
