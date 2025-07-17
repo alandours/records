@@ -35,15 +35,15 @@ export const useFilters = (initialData: InitialData) => {
         setFilters((prev) => ({ ...prev, folder: option.id }));
       },
     },
-    {
-      name: "color",
-      title: "Color",
-      data: FILTER_OPTIONS.color,
-      activeOption: colorFilter,
-      handleClick: (option: Option<Color>) => {
-        setColorFilter(option.id);
-      },
-    },
+    // {
+    //   name: "color",
+    //   title: "Color",
+    //   data: FILTER_OPTIONS.color,
+    //   activeOption: colorFilter,
+    //   handleClick: (option: Option<Color>) => {
+    //     setColorFilter(option.id);
+    //   },
+    // },
   ];
 
   const sortOptions = [
