@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { theme } from "@/constants/theme";
+import { Icon } from "../Icon";
 
 type RecordIconProps = {
   color?: string;
@@ -50,8 +51,8 @@ export const CdIcon = styled(RecordIcon)`
   );
 `;
 
-export const BoxsetIcon = styled(RecordIcon)`
-  background: ${theme.common.black.background};
+export const BoxsetIcon = styled(Icon)`
+  fill: #9e5c35;
   border-radius: 0;
 `;
 

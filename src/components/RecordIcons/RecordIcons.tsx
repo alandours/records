@@ -5,7 +5,7 @@ import { Icons } from "@/constants";
 import { getRecordColor } from "@/utils";
 import type { ReleaseFormat } from "@/types";
 
-import { AllMediaIcon, IconsContainer, VinylIcon } from "./styles";
+import { AllMediaIcon, BoxsetIcon, IconsContainer, VinylIcon } from "./styles";
 
 type RecordIconsProps = {
   format: ReleaseFormat;
@@ -17,7 +17,7 @@ const renderIcon = (format: ReleaseFormat, className?: string) => {
     case "cd":
       return <Icon name={Icons.cd} size="1.1rem" className={className} />;
     case "boxset":
-      return <Icon name={Icons.boxset} className={className} />;
+      return <BoxsetIcon name={Icons.boxset} className={className} />;
     case "allmedia":
       return <AllMediaIcon>i</AllMediaIcon>;
     default:
