@@ -42,7 +42,7 @@ export const FILTER_OPTIONS = {
   sort: [
     { id: Sort.artist, name: "Artist" },
     { id: Sort.title, name: "Album" },
-    { id: Sort.added, name: "Date added" },
+    { id: Sort.added, name: "Date" },
   ],
   sortOrder: [
     {
