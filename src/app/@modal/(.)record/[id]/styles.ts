@@ -14,38 +14,65 @@ export const Backdrop = styled.div`
 
 export const Modal = styled.div`
   background: white;
-  border-radius: 0.5rem;
   position: relative;
-  padding: 1.5rem;
-  height: 600px;
-  max-height: calc(100vh - 6rem);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  @media (min-width: 700px) {
+    border-radius: 0.25rem;
+    max-height: calc(100vh - 6rem);
+    max-width: calc(100vw - 6rem);
+    width: initial;
+  }
+
+  @media (min-width: 1120px) {
+    height: 600px;
+  }
 `;
 
 export const ReleaseContainer = styled.div`
   align-items: flex-start;
-  border-radius: 0.375rem;
   display: flex;
+  flex-direction: column;
   height: 100%;
+
+  @media (min-width: 1120px) {
+    flex-direction: row;
+  }
 `;
 
 export const ReleaseImage = styled.img`
-  height: 100%;
-  max-height: 600px;
+  width: 100%;
+
+  @media (min-width: 700px) {
+    height: 100%;
+    max-height: 600px;
+  }
+
+  @media (min-width: 1120px) {
+    width: auto;
+  }
 `;
 
 export const ReleaseData = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
   height: 100%;
   overflow: scroll;
-  padding-right: 1rem;
+  padding: 2rem;
+  width: 100%;
+
+  @media (min-width: 700px) {
+    width: 600px;
+  }
 `;
 
 export const ReleaseTitle = styled.h1`
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  text-decoration: underline;
 `;
 
 export const ReleaseFormat = styled.div`
@@ -72,8 +99,10 @@ export const ArtistThumbnail = styled.img`
 `;
 
 export const TrackRow = styled.tr`
+  background: #fbfbff;
+
   &:nth-child(odd) {
-    background: ${theme.light.main.background};
+    background: ${theme.light.secondary.background};
   }
 `;
 

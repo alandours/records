@@ -15,16 +15,23 @@ import {
   ReleaseFormat,
 } from "./styles";
 import { getRelease } from "@/app/actions";
-import { formatReleaseDescription, isFormat } from "@/utils";
+import { formatReleaseDescription, getReleaseUrl, isFormat } from "@/utils";
 import { RecordIcons } from "@/components/RecordIcons";
 import { ALL_MEDIA } from "@/constants";
+import Link from "next/link";
+import { ReleaseLink } from "@/components/ReleaseLink";
+import { ReleaseResponse } from "@/types";
+import { Camelized } from "humps";
+import { notFound } from "next/navigation";
 
 interface RecordModalProps {
   params: { id: string };
 }
 
 export default function RecordModal({ params }: RecordModalProps) {
-  const [release, setRelease] = useState(null);
+  const [release, setRelease] = useState<Camelized<ReleaseResponse> | null>(
+    null
+  );
 
   useEffect(() => {
     const fetchRelease = async () => {
@@ -34,10 +41,11 @@ export default function RecordModal({ params }: RecordModalProps) {
     fetchRelease();
   }, [params.id]);
 
-  console.log("release", release);
+  if (!release) {
+    notFound();
+  }
 
-  const { title, artists, extraartists, images, tracklist, formats } =
-    release || {};
+  const { id, title, artists, images, tracklist, formats } = release || {};
 
   return (
     <Backdrop>
@@ -46,7 +54,13 @@ export default function RecordModal({ params }: RecordModalProps) {
           <ReleaseContainer>
             <ReleaseImage src={images[0].resourceUrl} />
             <ReleaseData>
-              <ReleaseTitle>{title}</ReleaseTitle>
+              <a
+                href={getReleaseUrl(id)}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <ReleaseTitle>{title}</ReleaseTitle>
+              </a>
               <ReleaseFormat>
                 {formats.map(
                   (format, index) =>
@@ -69,20 +83,9 @@ export default function RecordModal({ params }: RecordModalProps) {
                   <div>{artist.name}</div>
                 </ArtistLink>
               ))}
-              {/* <div>{release.country}</div>
-              {extraartists.map((artist) => (
-                <a
-                  href={`https://www.discogs.com/artist/${artist.id}`}
-                  target="_blank"
-                  key={artist.id}
-                  style={{ display: "flex" }}
-                >
-                  <div>{artist.name}</div>
-                </a>
-              ))} */}
               <table>
                 {tracklist.map((track) => (
-                  <TrackRow>
+                  <TrackRow key={track.position}>
                     <TrackData>{track.position}</TrackData>
                     <TrackData>{track.title}</TrackData>
                     <TrackData>{track.duration}</TrackData>
