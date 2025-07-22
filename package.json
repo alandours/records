@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "@types/humps": "^2.0.6",
+    "@vercel/analytics": "^1.5.0",
     "framer-motion": "^11.0.6",
     "humps": "^2.0.1",
     "next": "14.1.0",

@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { GoogleTagManager } from "@/components/GoogleTagManager";
 import { BASE_URL, GTM_ID, SITE_DESCRIPTION, SITE_NAME } from "@/constants";
 import StyledComponentsRegistry from "@/lib/registry";
@@ -36,6 +36,7 @@ export default function RootLayout({
       </Suspense>
       <body className={inter.className}>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <VercelAnalytics />
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
