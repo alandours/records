@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 import { Icon } from "@/components/Icon";
 import { Icons } from "@/constants";
-import { getRecordColor } from "@/utils";
+import { formatFreeText, getRecordColor } from "@/utils";
 import type { ReleaseFormat } from "@/types";
 
 import { AllMediaIcon, BoxsetIcon, IconsContainer, VinylIcon } from "./styles";
@@ -21,7 +21,13 @@ const renderIcon = (format: ReleaseFormat, className?: string) => {
     case "allmedia":
       return <AllMediaIcon>i</AllMediaIcon>;
     default:
-      return <VinylIcon color={getRecordColor(format)} className={className} />;
+      return (
+        <VinylIcon
+          color={getRecordColor(format)}
+          className={className}
+          title={formatFreeText(format.text || "", false, true)}
+        />
+      );
   }
 };
 

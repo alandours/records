@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { theme } from "@/constants/theme";
 
 export const Container = styled.div`
-  background: ${theme.light.secondary.background};
-  border-bottom-left-radius: 0.375rem;
-  border-bottom-right-radius: 0.375rem;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  background: ${theme.light.main.background};
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 0.1);
   color: ${theme.light.secondary.color};
   display: flex;
   flex-direction: column;
@@ -19,12 +19,15 @@ export const Container = styled.div`
 
   @media (min-width: 400px) {
     border-bottom-left-radius: 0;
-    border-top-right-radius: 0.375rem;
+    border-top-right-radius: 0.25rem;
     flex-direction: row;
   }
 `;
 
 export const Content = styled.div`
+  border: 1px solid rgb(0 0 0 / 0.05);
+  border-left: 0;
+  border-radius: inherit;
   display: flex;
   flex-direction: column;
   font-size: 0.95rem;

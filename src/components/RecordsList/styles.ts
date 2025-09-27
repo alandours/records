@@ -7,7 +7,7 @@ type ListContainerProps = {
 export const ListContainer = styled.div<ListContainerProps>`
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0.5rem 1rem;
 
   @media (min-width: 640px) {

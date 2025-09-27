@@ -39,9 +39,22 @@ export const formatReleaseFlags = (format: ReleaseFormat): string => {
   return allowedDescriptions ? allowedDescriptions.join(COMMA_SEPARATOR) : "";
 };
 
-const formatFreeText = (freeText: string, removeColorKey = true): string => {
-  const filterColorKey = (text: string): boolean =>
-    removeColorKey ? !getColorKey(text) : true;
+export const formatFreeText = (
+  freeText: string,
+  removeColorKey = false,
+  removeOtherText = false
+): string => {
+  const filterColorKey = (text: string): boolean => {
+    if (removeColorKey) {
+      return !getColorKey(text);
+    }
+
+    if (removeOtherText) {
+      return !!getColorKey(text);
+    }
+
+    return true;
+  };
 
   const allowedFreeText = (text: string): boolean =>
     !HIDDEN_FREE_TEXT.some((hiddenFreeText) =>
@@ -56,7 +69,7 @@ const formatFreeText = (freeText: string, removeColorKey = true): string => {
 
 export const formatReleaseDescription = (format: ReleaseFormat): string => {
   const flags = formatReleaseFlags(format);
-  const text = formatFreeText(format.text || "");
+  const text = formatFreeText(format.text || "", true);
 
   let description = isFormat(format.name, ALL_MEDIA) ? "" : format.name;
 
