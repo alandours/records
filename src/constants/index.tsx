@@ -1,8 +1,13 @@
+import { AvailableFolders } from "./filters";
+
 export * from "./icons";
 export * from "./filters";
 export * from "./site";
 
-export const AVAILABLE_FOLDERS = [0, 6467602, 6467605];
+export const AVAILABLE_FOLDERS = [
+  AvailableFolders.LPS,
+  AvailableFolders.SINGLES,
+];
 
 export const HIDDEN_FLAGS = [
   '12"',

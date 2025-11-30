@@ -2,6 +2,11 @@ import type { Folder } from "@/types";
 
 import { Icons } from "./icons";
 
+export enum AvailableFolders {
+  LPS = 6467602,
+  SINGLES = 6467605,
+}
+
 export enum View {
   grid = "grid",
   list = "list",
@@ -25,7 +30,7 @@ export enum SortOrder {
 }
 
 export const INITIAL_FILTERS = {
-  folder: 0,
+  folder: AvailableFolders.LPS,
   sort: Sort.artist,
   sortOrder: SortOrder.asc,
   page: 1,
