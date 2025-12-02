@@ -6,7 +6,7 @@ export const Container = styled.div`
   background: ${theme.light.main.background};
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
-  box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 0.1);
+  box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 0.05);
   color: ${theme.light.secondary.color};
   display: flex;
   flex-direction: column;
