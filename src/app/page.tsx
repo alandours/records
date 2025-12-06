@@ -5,10 +5,14 @@ import { getInitialFilters, getInitialView } from "@/utils";
 import { getCollections, getFolders } from "./actions";
 
 type HomePageProps = {
-  searchParams: SearchParamsType;
+  searchParams: Promise<SearchParamsType>;
 };
 
-export default async function HomePage({ searchParams }: HomePageProps) {
+export default async function HomePage({
+  searchParams: searchParamsPromise,
+}: HomePageProps) {
+  const searchParams = await searchParamsPromise;
+
   const searchParamsData = {
     currentPage: 1,
     filters: getInitialFilters(searchParams),
