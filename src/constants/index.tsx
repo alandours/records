@@ -67,8 +67,10 @@ export const COLORS: ColorsMap = {
   "Dark Yellow": "#E5AC03",
   "Fruit Punch": "#8E2045",
   "Green Lime": "#ADE90E",
+  "Green Translucent [Bathwater]": "#A0E2C0",
   "Green Translucent": "#019D40",
   "[Light Blue] Translucent": "#3EF0F4",
+  "Coral [My Kink Is Coral]": "#DD6622",
   "Orange/Yellow/Brown": "#F18E00",
   "Picture Disc":
     "radial-gradient(circle, rgba(255,0,0,1) 8%, rgba(255,139,0,1) 14%, rgba(0,255,51,1) 32%, rgba(0,251,255,1) 48%, rgba(0,24,255,1) 64%, rgba(220,0,255,1) 77%, rgba(255,0,101,1) 88%)",

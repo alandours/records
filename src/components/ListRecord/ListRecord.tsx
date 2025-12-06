@@ -23,6 +23,8 @@ export const ListRecord = ({ release }: ListRecordProps) => {
     basicInformation: { id, title, coverImage, thumb, artists, formats },
   } = release;
 
+  const allMedia = formats.find((format) => isFormat(format.name, ALL_MEDIA));
+
   return (
     <ReleaseLink id={id}>
       <Container>
@@ -45,7 +47,7 @@ export const ListRecord = ({ release }: ListRecordProps) => {
                 $fullRow={isFormat(format.name, ALL_MEDIA)}
               >
                 {formatReleaseDescription(format) && (
-                  <RecordIcons format={format} />
+                  <RecordIcons format={format} allMediaText={allMedia?.text} />
                 )}
                 <RecordText>{formatReleaseDescription(format)}</RecordText>
               </Description>

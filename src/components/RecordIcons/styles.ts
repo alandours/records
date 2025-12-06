@@ -52,7 +52,7 @@ export const CdIcon = styled(RecordIcon)`
 `;
 
 export const BoxsetIcon = styled(Icon)`
-  fill: #9e5c35;
+  fill: ${theme.common.white.background};
   border-radius: 0;
 `;
 

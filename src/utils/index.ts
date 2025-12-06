@@ -93,12 +93,21 @@ const getColorKey = (text: string): string | undefined =>
       )
   );
 
-export const getRecordColor = (format: ReleaseFormat): string => {
-  const text = formatFreeText(format.text || "", false);
+export const getRecordColor = (
+  format: ReleaseFormat,
+  allMediaText?: string
+): { color: string; name?: string } => {
+  // Get color name from "All Media" format if not available in each invididual format
+  const text =
+    formatFreeText(format.text || "", false) ||
+    formatFreeText(allMediaText || "", false);
 
   const colorKey = getColorKey(text);
 
-  return colorKey ? COLORS[colorKey] : "black";
+  return {
+    color: colorKey ? COLORS[colorKey] : "black",
+    name: format.text,
+  };
 };
 
 export const getReleaseUrl = (id: number): string =>
@@ -120,13 +129,13 @@ export const filterByColor = (releases: Release[], color: Color): Release[] => {
     case Color.color:
       return releases.filter((release) =>
         release.basicInformation.formats.some(
-          (format) => getRecordColor(format) !== Color.black
+          (format) => getRecordColor(format).color !== Color.black
         )
       );
     case Color.black:
       return releases.filter((release) =>
         release.basicInformation.formats.some(
-          (format) => getRecordColor(format) === Color.black
+          (format) => getRecordColor(format).color === Color.black
         )
       );
     default:
