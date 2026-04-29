@@ -40,6 +40,8 @@ export const GridRecord = ({ release }: GridRecordProps) => {
     };
   }, [imageError]);
 
+  const allMedia = formats.find((format) => isFormat(format.name, ALL_MEDIA));
+
   return (
     <ReleaseLink id={id}>
       <Container>
@@ -65,8 +67,12 @@ export const GridRecord = ({ release }: GridRecordProps) => {
             (format, index) =>
               formatReleaseDescription(format) &&
               !isFormat(format.name, ALL_MEDIA) && (
-                <StyledRecordIcons format={format} key={index} />
-              )
+                <StyledRecordIcons
+                  format={format}
+                  allMediaText={allMedia?.text}
+                  key={index}
+                />
+              ),
           )}
         </RecordIconsContainer>
       </Container>

@@ -56,12 +56,14 @@ export const COLORS: ColorsMap = {
   "Blue [Deep Sea]": "#0900B4",
   "Blue [Light Blue] Translucent": "#3EF0F4",
   "Blue [Sea Blue]": "#006688",
+  "Blue [Sky Blue Translucent]": "#66CCDD",
   "Blue With Black & White Swirl [Safe Place Swirl]": "#366196",
   "Blue with Pink splatter": "#91BFD5",
   "Blood Moon Marbled": "#F18E00",
   "Clear W/ Yellow Splatter": "#F8F1B4",
   "Clear With Light Blue Hi-Melt": "#007FED",
   "Clear With Red & Yellow Swirl": "#E3BD2D",
+  "Cobalt [Translucent]": "#2222DD",
   "Coke Bottle": "#B1F3D1",
   "Dark Pink": "#F32B1B",
   "Dark Yellow": "#E5AC03",
@@ -102,7 +104,7 @@ export const COLORS: ColorsMap = {
   violet: "#BB2287",
   white: "#FFFFFF",
   yellow: "#F5DF00",
-  translucent: "#F0EFE9", // Last
+  translucent: "#F0EFE9",
 };
 
 export const EXCLUDE_COLORS = [
